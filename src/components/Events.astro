@@ -1,0 +1,37 @@
+---
+// Events section
+---
+
+<section id="events" class="px-6 lg:px-12 py-[120px] bg-white">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="text-center max-w-[700px] mx-auto mb-16 reveal">
+      <span class="inline-block text-gold text-[13px] font-semibold tracking-[2px] uppercase mb-4">Upcoming Events</span>
+      <h2 class="text-[clamp(36px,4vw,52px)] text-navy mb-4">What's Happening</h2>
+      <p class="text-text-light text-lg">Join us for these special gatherings and be part of our church community.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      {[
+        { month: 'Jun', day: '15', year: '2026', tag: 'Worship', title: 'Youth Sabbath', desc: 'A special worship service led by our talented young people. Experience the energy and faith of the next generation.', time: '11:00 AM · Sanctuary' },
+        { month: 'Jun', day: '22', year: '2026', tag: 'Special', title: 'Baptismal Service', desc: 'Celebrate new life in Christ as members make their public commitment to follow Jesus.', time: '11:00 AM · Sanctuary' },
+        { month: 'Jun', day: '29', year: '2026', tag: 'Outreach', title: 'Community Outreach', desc: "Join us as we serve our neighbors through acts of love and kindness in our local community.", time: '8:00 AM · Nyaura Town' },
+        { month: 'Jul', day: '06', year: '2026', tag: 'Worship', title: 'Music Festival', desc: 'An evening of inspiring music and worship featuring our choir and special guest artists.', time: '6:00 PM · Sanctuary' },
+        { month: 'Jul', day: '13', year: '2026', tag: 'Family', title: 'Family Fun Day', desc: 'Games, food, fellowship and faith-building activities for the whole family. All are welcome.', time: '10:00 AM · Church Grounds' },
+        { month: 'Jul', day: '20', year: '2026', tag: 'Health', title: 'Health Seminar', desc: 'Free community health screening and seminar on the 8 Natural Remedies. Open to the public.', time: '2:00 PM · Fellowship Hall' },
+      ].map(e => (
+        <div class="bg-cream rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_rgba(0,0,0,0.1)] grid grid-cols-[140px_1fr] reveal">
+          <div class="bg-gradient-to-br from-navy to-[#2d4a7a] text-white flex flex-col items-center justify-center p-5 text-center">
+            <div class="text-xs uppercase tracking-[2px] opacity-70">{e.month}</div>
+            <div class="font-heading text-[48px] font-semibold leading-[1] my-1">{e.day}</div>
+            <div class="text-xs opacity-70">{e.year}</div>
+          </div>
+          <div class="p-6 lg:p-7">
+            <span class="inline-block bg-cream text-navy px-2.5 py-1 rounded text-[11px] font-semibold uppercase tracking-[1px] mb-2">{e.tag}</span>
+            <h3 class="text-[22px] text-navy mb-2">{e.title}</h3>
+            <p class="text-text-light text-sm leading-relaxed">{e.desc}</p>
+            <div class="inline-flex items-center gap-1.5 text-gold text-[13px] font-semibold mt-3">🕐 {e.time}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

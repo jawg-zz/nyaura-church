@@ -1,0 +1,81 @@
+---
+import { sermons } from '../data/church.js';
+---
+
+<section id="sermons" class="px-6 lg:px-12 py-[120px] bg-white">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="text-center max-w-[700px] mx-auto mb-16 reveal">
+      <span class="inline-block text-gold text-[13px] font-semibold tracking-[2px] uppercase mb-4">Worship & Word</span>
+      <h2 class="text-[clamp(36px,4vw,52px)] text-navy mb-4">Recent Sermons</h2>
+      <p class="text-text-light text-lg">Missed a service? Catch up on recent messages. Subscribe to never miss an update.</p>
+    </div>
+
+    <!-- Featured -->
+    <div class="grid lg:grid-cols-[1.3fr_1fr] gap-16 items-center mb-20 bg-cream rounded-2xl overflow-hidden reveal">
+      <div class="relative aspect-video bg-navy-dark overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80" alt="Sermon" class="w-full h-full object-cover opacity-85">
+        <div class="absolute inset-0 flex items-center justify-center bg-black/20 cursor-pointer transition-colors duration-300 hover:bg-black/40 sermon-play-btn">
+          <div class="w-20 h-20 bg-gold rounded-full flex items-center justify-center text-[32px] text-navy-dark shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-transform duration-300 group-hover:scale-110">▶</div>
+        </div>
+      </div>
+      <div class="p-8 lg:pr-8 lg:py-12">
+        <span class="inline-block bg-gold text-navy-dark px-3.5 py-1 rounded-md text-xs font-semibold uppercase tracking-[1px] mb-4">Latest Message</span>
+        <h3 class="text-[36px] text-navy mb-3 leading-tight">Walking by Faith, Not by Sight</h3>
+        <div class="flex gap-5 flex-wrap my-4 mb-6 text-sm text-text-light">
+          <span class="flex items-center gap-1.5">📅 This Sabbath</span>
+          <span class="flex items-center gap-1.5">⏱ 42 min</span>
+          <span class="flex items-center gap-1.5">👤 Pastor Mwangi</span>
+        </div>
+        <p class="text-text-light text-base leading-relaxed mb-6">Life often presents us with circumstances that challenge our faith. In this powerful message, we explore how the heroes of faith trusted God even when the path ahead was unclear, and how we can do the same today.</p>
+        <div class="flex gap-3 flex-wrap">
+          <a href="#" class="btn-navy inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm no-underline transition-all duration-300">▶ Watch Now</a>
+          <a href="#" class="btn-outline-navy inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm no-underline transition-all duration-300">🎧 Audio</a>
+          <a href="#" class="btn-outline-navy inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-sm no-underline transition-all duration-300">📄 Notes</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Archive -->
+    <div class="flex justify-between items-center mb-8 flex-wrap gap-4 reveal">
+      <h3 class="text-[28px] text-navy">Sermon Archive</h3>
+      <div class="flex gap-2">
+        <button class="sermon-filter-btn active px-4 py-2 bg-cream border border-transparent rounded-lg text-[13px] cursor-pointer text-text font-medium font-body">All</button>
+        <button class="sermon-filter-btn px-4 py-2 bg-cream border border-transparent rounded-lg text-[13px] cursor-pointer text-text font-medium font-body">2026</button>
+        <button class="sermon-filter-btn px-4 py-2 bg-cream border border-transparent rounded-lg text-[13px] cursor-pointer text-text font-medium font-body">2025</button>
+      </div>
+    </div>
+
+    <!-- Sermon grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="sermonsGrid">
+      {
+        sermons.map(s => (
+          <div class="bg-white border border-black/6 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_32px_rgba(0,0,0,0.08)] cursor-pointer sermon-card">
+            <div class="relative aspect-video bg-navy-dark overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=80" alt={s.t} class="w-full h-full object-cover opacity-80">
+              <div class="absolute inset-0 flex items-center justify-center bg-black/15">
+                <span class="w-12 h-12 bg-gold rounded-full flex items-center justify-center text-navy-dark text-lg">▶</span>
+              </div>
+              <div class="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-0.5 rounded text-xs font-medium">{s.dur}</div>
+            </div>
+            <div class="p-5">
+              <div class="text-xs text-gold font-semibold uppercase tracking-[1px]">{s.d}</div>
+              <h4 class="text-lg text-navy my-2 leading-tight">{s.t}</h4>
+              <div class="text-[13px] text-text-muted italic">{s.s}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="text-center mt-12 reveal">
+      <a href="#" class="inline-flex items-center gap-2 px-8 py-3 rounded-lg font-medium text-sm text-navy border border-navy no-underline transition-all duration-300 hover:bg-navy hover:text-white">View All Sermons →</a>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .sermon-filter-btn.active { background: var(--color-navy); color: white; }
+  .btn-outline-navy { color: var(--color-navy); border: 1px solid var(--color-navy); }
+  .btn-outline-navy:hover { background: var(--color-navy); color: white; }
+  .sermon-play-btn:hover { transform: scale(1.1); }
+</style>

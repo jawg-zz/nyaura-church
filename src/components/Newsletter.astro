@@ -1,0 +1,15 @@
+---
+// Newsletter signup
+---
+
+<section class="px-6 lg:px-12 py-20 bg-white border-t border-black/6">
+  <div class="max-w-[900px] mx-auto text-center reveal">
+    <h3 class="text-[32px] text-navy mb-3">Stay Connected</h3>
+    <p class="text-text-light text-base mb-7">Get weekly announcements, sermon notes, and a Friday devotional delivered to your inbox.</p>
+    <form class="flex gap-3 max-w-[540px] mx-auto flex-wrap justify-center" id="newsletterForm" action="https://formsubmit.co/newsletter@nyaurachurch.org" method="POST">
+      <input type="hidden" name="_subject" value="New Newsletter Subscription">
+      <input type="email" placeholder="Your email address" required name="email" class="flex-1 min-w-[240px] px-5 py-4 border border-black/10 rounded-xl text-[15px] font-body focus:outline-none focus:border-gold">
+      <button type="submit" class="btn-navy whitespace-nowrap inline-flex items-center gap-2 px-8 py-4 rounded-lg font-medium text-sm no-underline border-none cursor-pointer font-body transition-all duration-300">Subscribe</button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+// Hero section with countdown
+---
+
+<section class="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-navy-dark via-navy to-[#2d4a7a]">
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1438032005730-c779502df39b?w=1920&q=80')] bg-center bg-cover opacity-15"></div>
+  <div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 py-[120px] lg:pb-20 grid lg:grid-cols-2 gap-20 items-center">
+    <div class="text-white">
+      <span class="inline-block bg-gold/20 text-gold-light px-5 py-2 rounded-full text-[13px] font-medium tracking-[1.5px] uppercase mb-6 border border-gold/30">Welcome to Nyaura</span>
+      <h1 class="text-[clamp(48px,6vw,72px)] font-semibold leading-[1.1] mb-6 text-white">
+        Find <span class="text-gold italic">rest</span> for your soul
+      </h1>
+      <p class="text-lg text-white/80 max-w-[500px] mb-6 leading-relaxed">
+        Join our community of faith where God's love transforms lives. Whether you're seeking spiritual growth, meaningful fellowship, or a place to call home — you belong here.
+      </p>
+      <div class="inline-flex items-center gap-3 bg-white/8 backdrop-blur border border-white/15 px-[18px] py-2.5 rounded-full mb-8 text-sm text-white/90" id="sabbathCountdown">
+        <span class="w-2 h-2 bg-gold rounded-full animate-[pulse_2s_infinite]"></span>
+        <span>Next Sabbath begins in <strong id="countdownTime" class="text-gold font-semibold">--</strong></span>
+      </div>
+      <div class="flex gap-4 flex-wrap">
+        <a href="#visit" class="btn-gold inline-flex items-center gap-2 px-8 py-4 rounded-lg font-medium text-[15px] no-underline transition-all duration-300 hover:-translate-y-0.5">Plan Your Visit</a>
+        <a href="#sermons" class="btn-outline inline-flex items-center gap-2 px-8 py-4 rounded-lg font-medium text-[15px] no-underline transition-all duration-300">Latest Sermon</a>
+      </div>
+    </div>
+    <div class="relative h-[500px] rounded-2xl overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.3)]">
+      <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=800&q=80" alt="Church community" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-transparent to-navy/40"></div>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .btn-gold { background: var(--color-gold); color: var(--color-navy-dark); }
+  .btn-gold:hover { background: var(--color-gold-light); }
+  .btn-outline { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+  .btn-navy { background: var(--color-navy); color: white; }
+  .btn-navy:hover { background: var(--color-navy-dark); }
+</style>
