@@ -34,7 +34,7 @@ jobs:
 
       - name: Trigger Dokploy deploy
         run: |
-          curl -s -X POST "https://main.spidmax.win/api/trpc/application.deploy?batch=1" \
+          curl -s -X POST "https://main.spidmax.win/api/trpc/application.deploy" \
             -H "Content-Type: application/json" \
             -H "x-api-key: ${{ secrets.DOKPLOY_API_KEY }}" \
-            -d '{"0":{"json":{"appId":"${{ secrets.DOKPLOY_APP_ID }}"}}}'
+            -d '{"json":{"applicationId":"${{ secrets.DOKPLOY_APP_ID }}"}}'
