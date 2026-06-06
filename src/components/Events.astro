@@ -2,38 +2,36 @@
 // Events
 ---
 
-<section id="events" class="px-6 lg:px-12 py-24 lg:py-32 bg-surface">
-  <div class="max-w-[1400px] mx-auto">
-    <div class="max-w-[680px] mb-16 reveal">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="inline-block w-8 h-px bg-gold"></span>
-        <span class="section-badge">Upcoming Events</span>
+<section id="events" class="px-6 lg:px-10 py-[100px] bg-cream">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[680px] mb-14 reveal">
+      <div class="section-label">
+        <span class="line"></span>
+        <span>Upcoming Events</span>
       </div>
-      <h2 class="text-[clamp(32px,3.5vw,48px)] mb-4">What's Happening</h2>
-      <p class="text-text-secondary text-[16px] leading-relaxed">Join us for these special gatherings and be part of our church community.</p>
+      <h2 class="text-[clamp(32px,3vw,44px)] mb-2">What's Happening</h2>
+      <p class="text-ink-secondary text-[17px] leading-relaxed">Join us for these special gatherings and be part of our church community.</p>
     </div>
     <div class="grid md:grid-cols-2 gap-5">
       {[
         { month: 'Jun', day: '15', tag: 'Worship', title: 'Youth Sabbath', desc: 'A special worship service led by our talented young people.', time: '11:00 AM · Sanctuary' },
         { month: 'Jun', day: '22', tag: 'Special', title: 'Baptismal Service', desc: 'Celebrate new life in Christ as members make their public commitment.', time: '11:00 AM · Sanctuary' },
         { month: 'Jun', day: '29', tag: 'Outreach', title: 'Community Outreach', desc: "Join us as we serve our neighbors through acts of love and kindness.", time: '8:00 AM · Nyaura Town' },
-        { month: 'Jul', day: '06', tag: 'Worship', title: 'Music Festival', desc: 'An evening of inspiring music and worship featuring our choir.', time: '6:00 PM · Sanctuary' },
-        { month: 'Jul', day: '13', tag: 'Family', title: 'Family Fun Day', desc: 'Games, food, fellowship and faith-building activities for all.', time: '10:00 AM · Church Grounds' },
+        { month: 'Jul', day: '06', tag: 'Worship', title: 'Music Festival', desc: 'An evening of inspiring music featuring our choir.', time: '6:00 PM · Sanctuary' },
+        { month: 'Jul', day: '13', tag: 'Family', title: 'Family Fun Day', desc: 'Games, food, fellowship and faith-building activities.', time: '10:00 AM · Church Grounds' },
         { month: 'Jul', day: '20', tag: 'Health', title: 'Health Seminar', desc: 'Free community health screening and seminar on natural remedies.', time: '2:00 PM · Fellowship Hall' },
       ].map(e => (
-        <div class="bg-white rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] border border-border/50 reveal">
+        <div class="bg-white rounded-sm overflow-hidden border border-border/60 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] reveal">
           <div class="flex">
-            <div class="w-[100px] shrink-0 bg-navy text-white flex flex-col items-center justify-center py-5">
-              <div class="text-xs uppercase tracking-[2px] opacity-60">{e.month}</div>
-              <div class="font-heading text-[36px] font-semibold leading-[1] my-0.5">{e.day}</div>
+            <div class="w-[90px] shrink-0 bg-navy text-white flex flex-col items-center justify-center py-5">
+              <div class="text-[11px] uppercase tracking-[2px] opacity-60">{e.month}</div>
+              <div class="font-heading text-[32px] font-semibold leading-[1] my-0.5">{e.day}</div>
             </div>
             <div class="p-5 flex-1">
-              <div class="flex items-center gap-2 mb-1.5">
-                <span class="text-[11px] font-semibold uppercase tracking-[1px] text-gold">{e.tag}</span>
-              </div>
-              <h3 class="text-base text-navy mb-1 leading-snug">{e.title}</h3>
-              <p class="text-xs text-text-secondary leading-relaxed mb-2">{e.desc}</p>
-              <div class="flex items-center gap-1.5 text-xs text-text-muted">
+              <span class="text-[11px] font-semibold uppercase tracking-[1px] text-gold">{e.tag}</span>
+              <h3 class="font-body text-[16px] font-semibold text-navy mb-1 leading-snug">{e.title}</h3>
+              <p class="text-xs text-ink-secondary leading-relaxed mb-2">{e.desc}</p>
+              <div class="flex items-center gap-1.5 text-xs text-ink-muted">
                 <i data-lucide="clock" class="w-3.5 h-3.5"></i>
                 <span>{e.time}</span>
               </div>

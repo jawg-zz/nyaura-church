@@ -2,34 +2,24 @@
 // Footer
 ---
 
-<footer class="bg-[#0a1628] text-white px-6 lg:px-12 pt-16 pb-8">
-  <div class="max-w-[1400px] mx-auto">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
-      <div class="lg:col-span-1">
-        <a href="#" class="flex items-center gap-3 no-underline mb-4">
-          <img src="/sda-full-logo.png" alt="Seventh-day Adventist Church" class="h-12 brightness-0 invert">
-          <span class="font-heading text-xl font-semibold text-white">Nyaura</span>
-        </a>
-        <p class="text-white/40 text-sm leading-relaxed max-w-[260px]">A community of Seventh-day Adventist believers dedicated to sharing God's love and preparing for His return.</p>
-        <div class="flex flex-col gap-2 mt-5 text-white/40 text-sm">
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="map-pin" class="w-4 h-4 text-gold/60"></i>
-            <span>Nyaura, Kenya</span>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="phone" class="w-4 h-4 text-gold/60"></i>
-            <a href="tel:+254****0000" class="text-white/50 no-underline hover:text-white transition-colors">+254 7XX XXX XXX</a>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <i data-lucide="mail" class="w-4 h-4 text-gold/60"></i>
-            <a href="mailto:info@nyaurachurch.org" class="text-white/50 no-underline hover:text-white transition-colors">info@nyaurachurch.org</a>
-          </div>
+<footer class="bg-navy text-white px-6 lg:px-10 pt-16 pb-8">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="/sda-full-logo.png" alt="" class="h-[44px] brightness-0 invert">
+          <span class="font-heading text-[22px] text-white">Nyaura</span>
+        </div>
+        <p class="text-white/40 text-sm leading-relaxed max-w-[280px]">A community of Seventh-day Adventist believers dedicated to sharing God's love and preparing for His return.</p>
+        <div class="flex flex-col gap-2 mt-6 text-white/40 text-sm">
+          <div class="flex items-center gap-2.5"><i data-lucide="map-pin" class="w-4 h-4 text-gold/50"></i><span>Nyaura, Kenya</span></div>
+          <div class="flex items-center gap-2.5"><i data-lucide="phone" class="w-4 h-4 text-gold/50"></i><a href="tel:+254****0000" class="text-white/45 no-underline hover:text-white transition-colors">+254 7XX XXX XXX</a></div>
+          <div class="flex items-center gap-2.5"><i data-lucide="mail" class="w-4 h-4 text-gold/50"></i><a href="mailto:info@nyaurachurch.org" class="text-white/45 no-underline hover:text-white transition-colors">info@nyaurachurch.org</a></div>
         </div>
       </div>
       {[
         { title: 'Worship', links: [['Sabbath School', '#about'], ['Divine Service', '#about'], ['Prayer Meeting', '#about'], ['Pathfinders', '#ministries']] },
         { title: 'Connect', links: [['About Us', '#about'], ['Ministries', '#ministries'], ['Events', '#events'], ['Sermons', '#sermons']] },
-        { title: 'Get Involved', links: [['Plan Your Visit', '#visit'], ['Prayer Request', '#prayer'], ['Give', '#contact'], ['Newsletter', '#']] },
         { title: 'Resources', links: [['Our Beliefs', '#beliefs'], ['Gallery', '#gallery'], ['Adventist.org', 'https://www.adventist.org'], ['Adventist World', 'https://www.adventistworld.org']] },
       ].map(col => (
         <div>
@@ -45,9 +35,9 @@
     <div class="flex flex-wrap justify-between items-center gap-6 mt-12 pt-8 border-t border-white/8">
       <p class="text-white/30 text-xs">© 2026 Nyaura Seventh-day Adventist Church.</p>
       <div class="flex gap-2">
-        {['facebook', 'youtube', 'instagram', 'message-circle'].map(icon => (
-          <a href="#" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center text-white/40 no-underline transition-all duration-200 hover:bg-gold/20 hover:text-gold">
-            <i data-lucide={icon === 'message-circle' ? 'message-circle' : icon} class="w-4 h-4"></i>
+        {['facebook', 'youtube', 'instagram'].map(icon => (
+          <a href="#" class="w-9 h-9 bg-white/5 rounded-sm flex items-center justify-center text-white/35 no-underline transition-all duration-200 hover:bg-gold/20 hover:text-gold">
+            <i data-lucide={icon} class="w-4 h-4"></i>
           </a>
         ))}
       </div>
@@ -55,7 +45,7 @@
   </div>
 </footer>
 
-<button class="scroll-top fixed bottom-6 right-6 w-11 h-11 rounded-full bg-navy text-gold flex items-center justify-center border-none cursor-pointer shadow-[0_4px_16px_rgba(0,0,0,0.2)] opacity-0 pointer-events-none transition-all duration-300 z-50 hover:bg-gold hover:text-navy-dark" id="scrollTop" aria-label="Scroll to top">
+<button class="scroll-top fixed bottom-6 right-6 w-11 h-11 rounded-sm bg-navy text-gold flex items-center justify-center border-none cursor-pointer shadow-[0_4px_16px_rgba(0,0,0,0.2)] opacity-0 pointer-events-none transition-all duration-300 z-50 hover:bg-gold hover:text-navy" id="scrollTop" aria-label="Scroll to top">
   <i data-lucide="arrow-up" class="w-5 h-5"></i>
 </button>
 

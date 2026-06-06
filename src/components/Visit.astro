@@ -2,15 +2,15 @@
 // Visit
 ---
 
-<section id="visit" class="px-6 lg:px-12 py-24 lg:py-32 bg-surface">
-  <div class="max-w-[1400px] mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-16 items-stretch">
+<section id="visit" class="px-6 lg:px-10 py-[100px] bg-white">
+  <div class="max-w-[1200px] mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-16 items-stretch">
     <div class="flex flex-col reveal">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="inline-block w-8 h-px bg-gold"></span>
-        <span class="section-badge">First Time?</span>
+      <div class="section-label">
+        <span class="line"></span>
+        <span>First Time?</span>
       </div>
-      <h2 class="text-[clamp(30px,3.5vw,44px)] mb-4">Plan Your Visit</h2>
-      <p class="text-text-secondary text-[16px] leading-relaxed mb-8">We'd love to welcome you. Here's what to expect when you visit Nyaura SDA Church.</p>
+      <h2 class="text-[clamp(30px,3vw,42px)] mb-4">Plan Your Visit</h2>
+      <p class="text-ink-secondary text-[16px] leading-relaxed mb-8">We'd love to welcome you. Here's what to expect when you visit Nyaura SDA Church.</p>
       <div class="grid gap-3 flex-1">
         {[
           { icon: 'hand', title: 'Warm Welcome', desc: 'Our greeters will meet you at the door. No dress code — come as you are.' },
@@ -18,19 +18,19 @@
           { icon: 'coffee', title: 'Fellowship Meal', desc: 'Stay after service for fellowship lunch — a beloved church tradition.' },
           { icon: 'parking-circle', title: 'Easy Access', desc: 'Ample parking, wheelchair accessible, and clear signage throughout.' },
         ].map(v => (
-          <div class="flex gap-4 p-5 bg-white rounded-xl border border-border/50">
-            <div class="w-10 h-10 bg-navy/5 rounded-lg flex items-center justify-center shrink-0 text-navy">
+          <div class="flex gap-4 p-5 bg-cream rounded-sm">
+            <div class="w-10 h-10 bg-white rounded-sm flex items-center justify-center shrink-0 text-navy">
               <i data-lucide={v.icon} class="w-5 h-5"></i>
             </div>
             <div>
-              <h4 class="text-sm font-semibold text-navy mb-0.5 font-body">{v.title}</h4>
-              <p class="text-xs text-text-secondary leading-relaxed">{v.desc}</p>
+              <h4 class="font-body text-sm font-semibold text-navy mb-0.5">{v.title}</h4>
+              <p class="text-xs text-ink-secondary leading-relaxed">{v.desc}</p>
             </div>
           </div>
         ))}
       </div>
     </div>
-    <div class="bg-white rounded-xl overflow-hidden min-h-[400px] border border-border/50 reveal">
+    <div class="bg-cream rounded-sm overflow-hidden min-h-[400px] border border-border/50 reveal">
       <iframe
         src="https://www.openstreetmap.org/export/embed.html?bbox=36.78%2C-1.30%2C36.86%2C-1.24&layer=mapnik&marker=-1.27%2C36.82"
         loading="lazy"

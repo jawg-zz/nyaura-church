@@ -2,77 +2,77 @@
 import { sermons } from '../data/church.js';
 ---
 
-<section id="sermons" class="px-6 lg:px-12 py-24 lg:py-32 bg-white">
-  <div class="max-w-[1400px] mx-auto">
+<section id="sermons" class="px-6 lg:px-10 py-[100px] bg-cream">
+  <div class="max-w-[1200px] mx-auto">
     <div class="max-w-[680px] mb-16 reveal">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="inline-block w-8 h-px bg-gold"></span>
-        <span class="section-badge">Worship & Word</span>
+      <div class="section-label">
+        <span class="line"></span>
+        <span>Worship & Word</span>
       </div>
-      <h2 class="text-[clamp(32px,3.5vw,48px)] mb-4">Recent Sermons</h2>
-      <p class="text-text-secondary text-[16px] leading-relaxed">Missed a service? Catch up on recent messages from our pastors.</p>
+      <h2 class="text-[clamp(32px,3vw,44px)] mb-2">Recent Sermons</h2>
+      <p class="text-ink-secondary text-[17px] leading-relaxed">Missed a service? Catch up on recent messages from our pastors.</p>
     </div>
 
     <!-- Featured -->
-    <div class="grid lg:grid-cols-[1.2fr_1fr] rounded-xl overflow-hidden border border-border mb-20 reveal">
-      <div class="relative aspect-[4/3] lg:aspect-auto bg-navy-dark overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=85" alt="Sermon" class="w-full h-full object-cover opacity-90">
+    <div class="grid lg:grid-cols-[1.2fr_1fr] rounded-sm border border-border mb-20 overflow-hidden bg-white reveal">
+      <div class="relative aspect-[4/3] lg:aspect-auto bg-navy overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=85" alt="" class="w-full h-full object-cover opacity-90">
         <div class="absolute inset-0 flex items-center justify-center bg-black/15 cursor-pointer transition-colors duration-300 hover:bg-black/30">
-          <div class="w-16 h-16 bg-gold rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105">
-            <i data-lucide="play" class="w-6 h-6 text-navy-dark fill-current"></i>
+          <div class="w-14 h-14 bg-gold rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105">
+            <i data-lucide="play" class="w-6 h-6 text-navy fill-current"></i>
           </div>
         </div>
       </div>
       <div class="p-8 lg:p-10 flex flex-col justify-center">
-        <span class="inline-block bg-gold/10 text-gold-dark text-xs font-semibold px-3 py-1 rounded-md uppercase tracking-[1px] mb-4">Latest Message</span>
-        <h3 class="text-[28px] text-navy mb-2 leading-tight">Walking by Faith, Not by Sight</h3>
-        <div class="flex flex-wrap gap-4 text-sm text-text-muted mb-4">
+        <span class="inline-block bg-gold/8 text-gold-dark text-[11px] font-semibold px-3 py-1 rounded-sm uppercase tracking-[1px] mb-4">Latest Message</span>
+        <h3 class="text-[28px] text-navy font-heading font-normal mb-2 leading-tight">Walking by Faith, Not by Sight</h3>
+        <div class="flex flex-wrap gap-4 text-sm text-ink-muted mb-4">
           <span class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> This Sabbath</span>
           <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 42 min</span>
           <span class="flex items-center gap-1.5"><i data-lucide="user" class="w-3.5 h-3.5"></i> Pastor Mwangi</span>
         </div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-6">Life often presents us with circumstances that challenge our faith. In this powerful message, we explore how the heroes of faith trusted God even when the path ahead was unclear.</p>
+        <p class="text-ink-secondary text-sm leading-relaxed mb-6">Life often presents us with circumstances that challenge our faith. In this powerful message, we explore how the heroes of faith trusted God even when the path ahead was unclear.</p>
         <div class="flex gap-3 flex-wrap">
-          <a href="#" class="btn btn-primary btn-sm">Watch Now</a>
-          <a href="#" class="btn btn-outline btn-sm text-text-secondary border-border">Audio</a>
-          <a href="#" class="btn btn-outline btn-sm text-text-secondary border-border">Notes</a>
+          <a href="#" class="btn btn-navy btn-sm">Watch Now</a>
+          <a href="#" class="btn btn-outline-navy btn-sm">Audio</a>
+          <a href="#" class="btn btn-outline-navy btn-sm">Notes</a>
         </div>
       </div>
     </div>
 
     <!-- Archive -->
-    <div class="flex items-center justify-between mb-8 reveal">
-      <h3 class="text-[24px] text-navy font-heading">Sermon Archive</h3>
-      <div class="flex gap-2">
+    <div class="flex items-center justify-between flex-wrap gap-4 mb-8 reveal">
+      <h3 class="text-[22px] text-navy font-heading font-normal">Sermon Archive</h3>
+      <div class="flex gap-1">
         {['All', '2026', '2025'].map(y => (
-          <button class={`sermon-filter ${y === 'All' ? 'active' : ''} px-4 py-1.5 bg-surface border border-border rounded-lg text-sm cursor-pointer text-text-secondary font-medium font-body transition-all duration-200`}>{y}</button>
+          <button class={`sermon-filter ${y === 'All' ? 'active' : ''} px-4 py-1.5 bg-white border border-border rounded-sm text-sm cursor-pointer text-ink-secondary font-medium font-body transition-all duration-200`}>{y}</button>
         ))}
       </div>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="sermonsGrid">
       {sermons.map(s => (
-        <div class="bg-white border border-border/60 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] cursor-pointer group">
-          <div class="relative aspect-video bg-navy-dark overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=85" alt={s.t} class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
+        <div class="bg-white border border-border/60 rounded-sm overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] cursor-pointer group">
+          <div class="relative aspect-video bg-navy overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=85" alt={s.t} loading="lazy" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 flex items-center justify-center bg-black/15">
               <span class="w-10 h-10 bg-gold rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <i data-lucide="play" class="w-4 h-4 text-navy-dark fill-current"></i>
+                <i data-lucide="play" class="w-4 h-4 text-navy fill-current"></i>
               </span>
             </div>
-            <div class="absolute bottom-2 right-2 bg-black/60 text-white/90 px-2 py-0.5 rounded text-xs font-medium backdrop-blur-sm">{s.dur}</div>
+            <div class="absolute bottom-2 right-2 bg-black/60 text-white/90 px-2 py-0.5 rounded-sm text-xs font-medium backdrop-blur-sm">{s.dur}</div>
           </div>
           <div class="p-5">
             <div class="text-xs text-gold font-semibold tracking-wide">{s.d}</div>
-            <h4 class="text-base text-navy my-1.5 leading-snug">{s.t}</h4>
-            <div class="text-xs text-text-muted italic">{s.s}</div>
+            <h4 class="font-body text-[16px] font-semibold text-navy my-1.5 leading-snug">{s.t}</h4>
+            <div class="text-xs text-ink-muted italic">{s.s}</div>
           </div>
         </div>
       ))}
     </div>
 
     <div class="text-center mt-12 reveal">
-      <a href="#" class="btn btn-outline text-navy border-navy/30">View All Sermons →</a>
+      <a href="#" class="btn btn-outline-navy btn-sm">View All Sermons →</a>
     </div>
   </div>
 </section>

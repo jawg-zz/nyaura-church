@@ -1,18 +1,18 @@
 ---
-// Ministries
+// Ministries — border-grid
 ---
 
-<section id="ministries" class="px-6 lg:px-12 py-24 lg:py-32 bg-navy text-white">
-  <div class="max-w-[1400px] mx-auto">
-    <div class="max-w-[680px] mb-16 reveal">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="inline-block w-8 h-px bg-gold"></span>
-        <span class="section-badge" style="color: var(--color-gold-light);">Our Ministries</span>
+<section id="ministries" class="px-6 lg:px-10 py-[100px] bg-cream">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="max-w-[680px] mb-14 reveal">
+      <div class="section-label">
+        <span class="line"></span>
+        <span>Our Ministries</span>
       </div>
-      <h2 class="text-[clamp(32px,3.5vw,48px)] text-white mb-4">Serving together in love</h2>
-      <p class="text-white/60 text-[16px] leading-relaxed">Discover the many ways you can grow spiritually and serve our community through our diverse ministries.</p>
+      <h2 class="text-[clamp(32px,3vw,44px)] mb-2">Serving together in love</h2>
+      <p class="text-ink-secondary text-[17px] leading-relaxed">Discover the many ways you can grow spiritually and serve our community through our diverse ministries.</p>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 border border-border">
       {[
         { icon: 'book-open', title: 'Bible Study', desc: "Deepen your understanding of God's Word through interactive study groups and personal devotion resources." },
         { icon: 'music', title: 'Music Ministry', desc: "Share God's love through song with our choir, praise team, and special music programs for all ages." },
@@ -21,12 +21,12 @@
         { icon: 'globe', title: 'Missions', desc: "Share God's love locally and globally through outreach programs, community service, and mission trips." },
         { icon: 'sparkles', title: 'Youth Ministry', desc: 'Empower the next generation through Pathfinders, youth groups, and mentorship programs.' },
       ].map(m => (
-        <div class="bg-white/5 border border-white/8 rounded-xl p-7 transition-all duration-300 hover:bg-white/8 hover:-translate-y-0.5 hover:border-gold/40 reveal">
-          <div class="w-11 h-11 bg-gold/15 rounded-lg flex items-center justify-center mb-4">
-            <i data-lucide={m.icon} class="w-5 h-5 text-gold"></i>
+        <div class="bg-white py-10 px-9 border-r border-b border-border transition-all duration-300 hover:bg-cream">
+          <div class="w-[44px] h-[44px] mb-5 bg-cream rounded-md flex items-center justify-center text-navy">
+            <i data-lucide={m.icon} class="w-5 h-5"></i>
           </div>
-          <h3 class="text-lg text-white mb-2">{m.title}</h3>
-          <p class="text-white/50 text-sm leading-relaxed">{m.desc}</p>
+          <h3 class="font-heading text-[24px] text-navy font-normal mb-3">{m.title}</h3>
+          <p class="text-sm text-ink-secondary leading-relaxed">{m.desc}</p>
         </div>
       ))}
     </div>

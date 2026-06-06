@@ -2,39 +2,34 @@
 // Hero
 ---
 
-<section class="relative min-h-[90vh] flex items-center bg-navy-dark overflow-hidden">
-  <!-- Background image with refined overlay -->
-  <div class="absolute inset-0">
-    <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=1920&q=85" alt="" class="w-full h-full object-cover">
-    <div class="absolute inset-0 bg-gradient-to-r from-navy-dark/95 via-navy-dark/85 to-navy-dark/70"></div>
-  </div>
+<section class="relative min-h-[92vh] flex items-center bg-navy overflow-hidden mt-[72px]">
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=1920&q=85')] bg-center bg-cover opacity-[0.08]"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-20 bg-cream" style="clip-path: ellipse(70% 100% at 50% 100%);"></div>
 
-  <div class="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
-    <div class="max-w-[680px]">
-      <div class="flex items-center gap-3 mb-8">
-        <span class="inline-block w-8 h-px bg-gold"></span>
-        <span class="text-xs font-semibold tracking-[3px] uppercase text-gold">Nyaura Seventh-day Adventist Church</span>
-      </div>
-
-      <h1 class="text-[clamp(44px,5.5vw,72px)] font-semibold leading-[1.05] text-white mb-6 tracking-tight">
-        Find <span class="text-gold italic">rest</span><br>
+  <div class="relative z-10 w-full max-w-[1200px] mx-auto px-6 lg:px-10 grid lg:grid-cols-[1.2fr_1fr] gap-20 items-center py-24">
+    <div>
+      <h6 class="font-body text-xs font-semibold tracking-[3px] uppercase text-gold-light mb-6">Nyaura Seventh-day Adventist Church</h6>
+      <h1 class="text-[clamp(48px,5vw,68px)] leading-[1.05] text-white font-heading font-normal mb-6">
+        Find <em class="italic text-gold">rest</em><br>
         for your soul
       </h1>
-
-      <p class="text-lg lg:text-xl text-white/70 max-w-[520px] mb-10 leading-relaxed">
+      <p class="text-lg text-white/65 max-w-[480px] leading-relaxed mb-9">
         Join our community of faith where God's love transforms lives. Whether you're seeking spiritual growth, meaningful fellowship, or a place to call home — you belong here.
       </p>
 
-      <!-- Sabbath countdown -->
-      <div class="inline-flex items-center gap-3 bg-white/8 backdrop-blur-md border border-white/12 px-5 py-3 rounded-full mb-10 text-sm text-white/80" id="sabbathCountdown">
-        <span class="w-2 h-2 bg-gold rounded-full animate-[pulse_2s_infinite]"></span>
+      <div class="inline-flex items-center gap-3 bg-white/6 backdrop-blur-md border border-white/8 px-5 py-3 rounded-md mb-9 text-sm text-white/80" id="sabbathCountdown">
+        <span class="w-2 h-2 rounded-full bg-gold animate-[pulse_2s_infinite]"></span>
         <span>Next Sabbath begins in <strong id="countdownTime" class="text-gold font-semibold">--</strong></span>
       </div>
 
-      <div class="flex gap-4 flex-wrap">
-        <a href="#visit" class="btn btn-gold text-sm px-8 py-4">Plan Your Visit</a>
-        <a href="#sermons" class="btn btn-outline text-white/80 border-white/25 text-sm px-8 py-4 hover:bg-white/8 hover:border-white/40">Latest Sermon</a>
+      <div class="flex gap-3 flex-wrap">
+        <a href="#visit" class="btn-gold">Plan Your Visit</a>
+        <a href="#sermons" class="btn-outline-light">Latest Sermon</a>
       </div>
+    </div>
+
+    <div class="relative h-[560px] rounded-sm overflow-hidden hidden lg:block">
+      <img src="https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=800&q=85" alt="" class="w-full h-full object-cover">
     </div>
   </div>
 </section>

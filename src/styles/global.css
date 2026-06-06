@@ -1,40 +1,36 @@
 @import "tailwindcss";
 
-/* ── Design Tokens ── */
 @theme {
-  --color-navy: #1a365d;
-  --color-navy-dark: #0f2340;
-  --color-navy-light: #2d4a7a;
-  --color-gold: #c9a962;
+  --color-navy: #1a2a3a;
+  --color-navy-dark: #0f1a28;
+  --color-navy-light: #2a4060;
+  --color-gold: #c49b3f;
   --color-gold-light: #e8d5a3;
-  --color-gold-dark: #b8943e;
-  --color-cream: #faf9f6;
-  --color-cream-dark: #f5f3ee;
-  --color-surface: #f8f6f3;
-  --color-border: #e8e6e1;
-  --color-text: #1a1a1a;
-  --color-text-secondary: #6b6b6b;
-  --color-text-muted: #999999;
+  --color-gold-dark: #a67c2e;
+  --color-cream: #f8f5f0;
+  --color-cream-dark: #f0ebe5;
+  --color-white: #ffffff;
+  --color-ink: #1a1a1a;
+  --color-ink-secondary: #6b645e;
+  --color-ink-muted: #a09890;
+  --color-border: #e5ddd5;
+  --color-border-light: #f0ebe5;
   --color-success: #2f855a;
 
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
 }
 
-/* ── Base ── */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  color: var(--color-text);
-  background: white;
+  color: var(--color-ink);
+  background: var(--color-cream);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,40 +38,44 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.15;
   color: var(--color-navy);
 }
 
-section {
-  scroll-margin-top: 80px;
-}
+section { scroll-margin-top: 80px; }
 
-::selection {
-  background: var(--color-gold);
-  color: var(--color-navy-dark);
-}
+::selection { background: var(--color-gold); color: var(--color-navy-dark); }
 
-/* ── Section Badge ── */
-.section-badge {
-  display: inline-block;
-  font-size: 12px;
+/* ── Section Label ── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.section-label span {
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--color-gold);
-  margin-bottom: 12px;
+  color: var(--color-gold-dark);
+}
+.section-label .line {
+  width: 40px;
+  height: 1px;
+  background: var(--color-gold);
 }
 
 /* ── Buttons ── */
-.btn {
+.btn, .btn-gold, .btn-primary, .btn-outline-light {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 28px;
-  border-radius: var(--radius-sm);
+  padding: 16px 32px;
+  border-radius: var(--radius-md);
   font-weight: 500;
-  font-size: 14px;
+  font-size: 15px;
   text-decoration: none;
   transition: all 0.25s ease;
   border: none;
@@ -83,46 +83,48 @@ section {
   font-family: inherit;
   line-height: 1;
 }
-.btn-primary {
+.btn-gold, .btn-primary {
+  background: var(--color-gold);
+  color: var(--color-navy);
+}
+.btn-gold:hover, .btn-primary:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+.btn-navy {
   background: var(--color-navy);
   color: white;
 }
-.btn-primary:hover {
-  background: var(--color-navy-dark);
+.btn-navy:hover {
+  background: var(--color-navy-light);
   transform: translateY(-1px);
 }
-.btn-gold {
-  background: var(--color-gold);
-  color: var(--color-navy-dark);
-}
-.btn-gold:hover {
-  background: var(--color-gold-light);
-  transform: translateY(-1px);
-}
-.btn-outline {
+.btn-outline-light {
   background: transparent;
-  border: 1.5px solid currentColor;
+  color: white;
+  border: 1.5px solid rgba(255,255,255,0.2);
 }
-.btn-outline:hover {
-  opacity: 0.7;
+.btn-outline-light:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.4);
 }
-.btn-sm {
-  padding: 10px 20px;
-  font-size: 13px;
+.btn-outline-navy {
+  background: transparent;
+  color: var(--color-ink-secondary);
+  border: 1.5px solid var(--color-border);
 }
+.btn-outline-navy:hover {
+  border-color: var(--color-gold);
+  color: var(--color-navy);
+}
+.btn-sm { padding: 10px 22px; font-size: 14px; }
 
-/* ── Reveal Animation ── */
+/* ── Reveal ── */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }

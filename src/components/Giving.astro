@@ -2,17 +2,17 @@
 // Giving
 ---
 
-<section id="contact" class="px-6 lg:px-12 py-24 lg:py-32 bg-navy text-white relative overflow-hidden">
+<section id="contact" class="px-6 lg:px-10 py-[100px] bg-navy text-white relative overflow-hidden">
   <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&q=85')] bg-center bg-cover opacity-[0.06]"></div>
   <div class="max-w-[1200px] mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
     <div class="reveal">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="inline-block w-8 h-px bg-gold"></span>
-        <span class="section-badge" style="color: var(--color-gold-light);">Generosity</span>
+      <div class="section-label">
+        <span class="line" style="background: var(--color-gold);"></span>
+        <span style="color: var(--color-gold-light);">Generosity</span>
       </div>
-      <h2 class="text-[clamp(30px,3.5vw,44px)] text-white mb-5 leading-[1.1]">Return God's Tithes & Offerings</h2>
-      <p class="text-white/60 text-[16px] leading-relaxed mb-6">Your faithful giving supports ministry, outreach, and the work of God's kingdom. Every gift makes a difference.</p>
-      <blockquote class="p-5 bg-white/6 border-l-2 border-gold rounded-r-lg">
+      <h2 class="text-[clamp(30px,3vw,42px)] text-white mb-5 leading-[1.1]">Return God's Tithes & Offerings</h2>
+      <p class="text-white/55 text-[16px] leading-relaxed mb-6">Your faithful giving supports ministry, outreach, and the work of God's kingdom. Every gift makes a difference.</p>
+      <blockquote class="p-5 bg-white/6 border-l-2 border-gold rounded-sm">
         <p class="font-heading text-sm italic text-white/80 leading-relaxed">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
         <p class="text-xs text-gold font-semibold mt-2 font-body not-italic">— 2 Corinthians 9:7</p>
       </blockquote>
@@ -24,13 +24,13 @@
         { icon: 'building', title: 'In-Person', desc: 'During Sabbath services or by appointment' },
         { icon: 'file-text', title: 'Annual Report', desc: 'View how your gifts are used in ministry' },
       ].map(g => (
-        <a href="#" class="bg-white/5 border border-white/8 rounded-xl p-5 flex items-center gap-4 transition-all duration-300 hover:bg-white/8 hover:border-gold/30 no-underline text-white group">
-          <div class="w-12 h-12 bg-gold/15 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-gold/25">
+        <a href="#" class="bg-white/5 border border-white/8 rounded-sm p-5 flex items-center gap-4 transition-all duration-300 hover:bg-white/8 hover:border-gold/30 no-underline text-white group">
+          <div class="w-11 h-11 bg-gold/15 rounded-sm flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-gold/25">
             <i data-lucide={g.icon} class="w-5 h-5 text-gold"></i>
           </div>
           <div class="flex-1 min-w-0">
             <h4 class="text-sm font-semibold text-white mb-0.5">{g.title}</h4>
-            <p class="text-xs text-white/50">{g.desc}</p>
+            <p class="text-xs text-white/45">{g.desc}</p>
           </div>
           <i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0"></i>
         </a>
