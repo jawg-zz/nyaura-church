@@ -2,63 +2,62 @@
 // Footer
 ---
 
-<footer class="bg-[#0a1628] text-white px-6 lg:px-12 pt-20 pb-10">
-  <div class="max-w-[1400px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-10">
-    <div>
-      <a href="#" class="flex items-center gap-3 no-underline mb-4">
-        <div class="h-14 flex items-center">
-          <img src="/sda-full-logo.png" alt="Seventh-day Adventist Church" class="h-full w-auto object-contain brightness-0 invert">
+<footer class="bg-[#0a1628] text-white px-6 lg:px-12 pt-16 pb-8">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+      <div class="lg:col-span-1">
+        <a href="#" class="flex items-center gap-3 no-underline mb-4">
+          <img src="/sda-full-logo.png" alt="Seventh-day Adventist Church" class="h-12 brightness-0 invert">
+          <span class="font-heading text-xl font-semibold text-white">Nyaura</span>
+        </a>
+        <p class="text-white/40 text-sm leading-relaxed max-w-[260px]">A community of Seventh-day Adventist believers dedicated to sharing God's love and preparing for His return.</p>
+        <div class="flex flex-col gap-2 mt-5 text-white/40 text-sm">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="map-pin" class="w-4 h-4 text-gold/60"></i>
+            <span>Nyaura, Kenya</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="phone" class="w-4 h-4 text-gold/60"></i>
+            <a href="tel:+254****0000" class="text-white/50 no-underline hover:text-white transition-colors">+254 7XX XXX XXX</a>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="mail" class="w-4 h-4 text-gold/60"></i>
+            <a href="mailto:info@nyaurachurch.org" class="text-white/50 no-underline hover:text-white transition-colors">info@nyaurachurch.org</a>
+          </div>
         </div>
-        <span class="font-heading text-[22px] font-semibold text-white">Nyaura</span>
-      </a>
-      <p class="text-white/60 text-sm leading-relaxed max-w-[320px]">A community of Seventh-day Adventist believers dedicated to sharing God's love and preparing for His return.</p>
-      <div class="flex flex-col gap-3 mt-5 text-white/60 text-sm">
-        <div class="flex gap-2.5 items-start"><span class="text-gold shrink-0 mt-0.5">📍</span><span>Nyaura, Kenya</span></div>
-        <div class="flex gap-2.5 items-start"><span class="text-gold shrink-0 mt-0.5">📞</span><a href="tel:+254****0000" class="text-white/80 no-underline hover:text-white">+254 7XX XXX XXX</a></div>
-        <div class="flex gap-2.5 items-start"><span class="text-gold shrink-0 mt-0.5">✉️</span><a href="mailto:info@nyaurachurch.org" class="text-white/80 no-underline hover:text-white">info@nyaurachurch.org</a></div>
       </div>
+      {[
+        { title: 'Worship', links: [['Sabbath School', '#about'], ['Divine Service', '#about'], ['Prayer Meeting', '#about'], ['Pathfinders', '#ministries']] },
+        { title: 'Connect', links: [['About Us', '#about'], ['Ministries', '#ministries'], ['Events', '#events'], ['Sermons', '#sermons']] },
+        { title: 'Get Involved', links: [['Plan Your Visit', '#visit'], ['Prayer Request', '#prayer'], ['Give', '#contact'], ['Newsletter', '#']] },
+        { title: 'Resources', links: [['Our Beliefs', '#beliefs'], ['Gallery', '#gallery'], ['Adventist.org', 'https://www.adventist.org'], ['Adventist World', 'https://www.adventistworld.org']] },
+      ].map(col => (
+        <div>
+          <h4 class="font-body text-xs font-semibold tracking-[1.5px] uppercase text-gold/70 mb-5">{col.title}</h4>
+          <div class="flex flex-col gap-3">
+            {col.links.map(([label, href]) => (
+              <a href={href} class="text-white/40 text-sm no-underline hover:text-white transition-colors" {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}>{label}</a>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
-    <div>
-      <h4 class="font-body text-sm font-semibold tracking-[1px] uppercase text-gold mb-6">Worship</h4>
-      <a href="#about" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Sabbath School</a>
-      <a href="#about" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Divine Service</a>
-      <a href="#about" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Prayer Meeting</a>
-      <a href="#ministries" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Pathfinders</a>
-    </div>
-    <div>
-      <h4 class="font-body text-sm font-semibold tracking-[1px] uppercase text-gold mb-6">Connect</h4>
-      <a href="#about" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">About Us</a>
-      <a href="#ministries" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Ministries</a>
-      <a href="#events" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Events</a>
-      <a href="#sermons" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Sermons</a>
-    </div>
-    <div>
-      <h4 class="font-body text-sm font-semibold tracking-[1px] uppercase text-gold mb-6">Get Involved</h4>
-      <a href="#visit" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Plan Your Visit</a>
-      <a href="#prayer" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Prayer Request</a>
-      <a href="#contact" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Give</a>
-      <a href="#newsletter" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Newsletter</a>
-    </div>
-    <div>
-      <h4 class="font-body text-sm font-semibold tracking-[1px] uppercase text-gold mb-6">Resources</h4>
-      <a href="#beliefs" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Our Beliefs</a>
-      <a href="#gallery" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Gallery</a>
-      <a href="https://www.adventist.org" target="_blank" rel="noopener" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Adventist.org</a>
-      <a href="https://www.adventistworld.org" target="_blank" rel="noopener" class="block text-white/60 no-underline text-sm mb-3 hover:text-white">Adventist World</a>
-    </div>
-  </div>
-  <div class="max-w-[1400px] mx-auto mt-16 pt-8 border-t border-white/10 flex flex-wrap justify-between items-center gap-6">
-    <p class="text-white/40 text-sm">© 2026 Nyaura Seventh-day Adventist Church. All rights reserved.</p>
-    <div class="flex gap-3">
-      <a href="#" aria-label="Facebook" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white/60 no-underline text-base transition-all duration-200 hover:bg-gold hover:text-navy-dark">f</a>
-      <a href="#" aria-label="YouTube" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white/60 no-underline text-base transition-all duration-200 hover:bg-gold hover:text-navy-dark">▶</a>
-      <a href="#" aria-label="Instagram" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white/60 no-underline text-base transition-all duration-200 hover:bg-gold hover:text-navy-dark">◎</a>
-      <a href="#" aria-label="WhatsApp" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white/60 no-underline text-base transition-all duration-200 hover:bg-gold hover:text-navy-dark">w</a>
+    <div class="flex flex-wrap justify-between items-center gap-6 mt-12 pt-8 border-t border-white/8">
+      <p class="text-white/30 text-xs">© 2026 Nyaura Seventh-day Adventist Church.</p>
+      <div class="flex gap-2">
+        {['facebook', 'youtube', 'instagram', 'message-circle'].map(icon => (
+          <a href="#" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center text-white/40 no-underline transition-all duration-200 hover:bg-gold/20 hover:text-gold">
+            <i data-lucide={icon === 'message-circle' ? 'message-circle' : icon} class="w-4 h-4"></i>
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </footer>
 
-<button class="scroll-top fixed bottom-6 right-6 w-12 h-12 rounded-full bg-navy text-gold flex items-center justify-center border-none cursor-pointer text-xl shadow-[0_8px_24px_rgba(0,0,0,0.2)] opacity-0 pointer-events-none transition-all duration-300 z-50 hover:bg-gold hover:text-navy-dark hover:-translate-y-0.5" id="scrollTop" aria-label="Scroll to top">↑</button>
+<button class="scroll-top fixed bottom-6 right-6 w-11 h-11 rounded-full bg-navy text-gold flex items-center justify-center border-none cursor-pointer shadow-[0_4px_16px_rgba(0,0,0,0.2)] opacity-0 pointer-events-none transition-all duration-300 z-50 hover:bg-gold hover:text-navy-dark" id="scrollTop" aria-label="Scroll to top">
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
 
 <style is:global>
   .scroll-top.show { opacity: 1; pointer-events: auto; }

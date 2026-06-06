@@ -1,35 +1,38 @@
 ---
-// Giving section
+// Giving
 ---
 
-<section id="contact" class="px-6 lg:px-12 py-[120px] bg-gradient-to-br from-navy to-navy-dark text-white relative overflow-hidden">
-  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&q=80')] bg-center bg-cover opacity-8"></div>
-  <div class="max-w-[1200px] mx-auto relative z-10 grid lg:grid-cols-2 gap-20 items-center">
+<section id="contact" class="px-6 lg:px-12 py-24 lg:py-32 bg-navy text-white relative overflow-hidden">
+  <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1920&q=85')] bg-center bg-cover opacity-[0.06]"></div>
+  <div class="max-w-[1200px] mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
     <div class="reveal">
-      <span class="inline-block text-gold-light text-[13px] font-semibold tracking-[2px] uppercase mb-4">Generosity</span>
-      <h2 class="text-[clamp(36px,4vw,48px)] text-white mb-5">Return God's Tithes & Offerings</h2>
-      <p class="text-white/80 text-[17px] leading-relaxed mb-4">Your faithful giving supports ministry, outreach, and the work of God's kingdom. Every gift makes a difference.</p>
-      <div class="mt-8 p-5 lg:p-6 bg-white/6 border-l-3 border-gold rounded-r-xl">
-        <p class="font-heading text-base italic text-white/90 leading-relaxed">
-          "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
-          <span class="block mt-2 text-gold text-[13px] font-semibold font-body not-italic">— 2 Corinthians 9:7</span>
-        </p>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-block w-8 h-px bg-gold"></span>
+        <span class="section-badge" style="color: var(--color-gold-light);">Generosity</span>
       </div>
+      <h2 class="text-[clamp(30px,3.5vw,44px)] text-white mb-5 leading-[1.1]">Return God's Tithes & Offerings</h2>
+      <p class="text-white/60 text-[16px] leading-relaxed mb-6">Your faithful giving supports ministry, outreach, and the work of God's kingdom. Every gift makes a difference.</p>
+      <blockquote class="p-5 bg-white/6 border-l-2 border-gold rounded-r-lg">
+        <p class="font-heading text-sm italic text-white/80 leading-relaxed">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+        <p class="text-xs text-gold font-semibold mt-2 font-body not-italic">— 2 Corinthians 9:7</p>
+      </blockquote>
     </div>
-    <div class="grid gap-4 reveal">
+    <div class="grid gap-3 reveal">
       {[
-        { icon: '💳', title: 'Online Giving', desc: 'Secure card / mobile money via M-Pesa' },
-        { icon: '🏦', title: 'Bank Transfer', desc: 'Direct deposit to church account' },
-        { icon: '⛪', title: 'In-Person', desc: 'During Sabbath services or by appointment' },
-        { icon: '📊', title: 'Annual Report', desc: 'View how your gifts are used in ministry' },
+        { icon: 'credit-card', title: 'Online Giving', desc: 'Secure card / mobile money via M-Pesa' },
+        { icon: 'landmark', title: 'Bank Transfer', desc: 'Direct deposit to church account' },
+        { icon: 'building', title: 'In-Person', desc: 'During Sabbath services or by appointment' },
+        { icon: 'file-text', title: 'Annual Report', desc: 'View how your gifts are used in ministry' },
       ].map(g => (
-        <a href="#" class="bg-white/6 border border-white/10 rounded-2xl p-6 flex items-center gap-5 transition-all duration-300 hover:bg-white/10 hover:border-gold hover:translate-x-1 no-underline text-white">
-          <div class="w-14 h-14 bg-gradient-to-br from-gold to-gold-light rounded-xl flex items-center justify-center text-2xl shrink-0">{g.icon}</div>
-          <div>
-            <h4 class="text-lg text-white mb-1">{g.title}</h4>
-            <p class="text-sm text-white/60">{g.desc}</p>
+        <a href="#" class="bg-white/5 border border-white/8 rounded-xl p-5 flex items-center gap-4 transition-all duration-300 hover:bg-white/8 hover:border-gold/30 no-underline text-white group">
+          <div class="w-12 h-12 bg-gold/15 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-gold/25">
+            <i data-lucide={g.icon} class="w-5 h-5 text-gold"></i>
           </div>
-          <span class="ml-auto text-gold text-xl">→</span>
+          <div class="flex-1 min-w-0">
+            <h4 class="text-sm font-semibold text-white mb-0.5">{g.title}</h4>
+            <p class="text-xs text-white/50">{g.desc}</p>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-gold shrink-0"></i>
         </a>
       ))}
     </div>

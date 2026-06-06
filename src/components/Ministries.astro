@@ -1,28 +1,32 @@
 ---
-// Ministries section
+// Ministries
 ---
 
-<section id="ministries" class="px-6 lg:px-12 py-[120px] bg-navy-dark text-white">
+<section id="ministries" class="px-6 lg:px-12 py-24 lg:py-32 bg-navy text-white">
   <div class="max-w-[1400px] mx-auto">
-    <div class="mb-16 max-w-[700px] reveal">
-      <span class="inline-block text-gold-light text-[13px] font-semibold tracking-[2px] uppercase mb-4">Our Ministries</span>
-      <h2 class="text-[clamp(36px,4vw,48px)] text-white mb-4">Serving together in love</h2>
-      <p class="text-white/60 text-lg">Discover the many ways you can grow spiritually and serve our community through our diverse ministries.</p>
+    <div class="max-w-[680px] mb-16 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="inline-block w-8 h-px bg-gold"></span>
+        <span class="section-badge" style="color: var(--color-gold-light);">Our Ministries</span>
+      </div>
+      <h2 class="text-[clamp(32px,3.5vw,48px)] text-white mb-4">Serving together in love</h2>
+      <p class="text-white/60 text-[16px] leading-relaxed">Discover the many ways you can grow spiritually and serve our community through our diverse ministries.</p>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {[
-        { icon: '📖', title: 'Bible Study', desc: "Deepen your understanding of God's Word through interactive study groups and personal devotion resources.", link: 'Join a study group →' },
-        { icon: '🎵', title: 'Music Ministry', desc: "Share God's love through song with our choir, praise team, and special music programs for all ages.", link: 'Audition info →' },
-        { icon: '👨‍👩‍👧‍👦', title: 'Family Ministry', desc: 'Strengthen family bonds through marriage enrichment, parenting workshops, and family-focused events.', link: 'Upcoming events →' },
-        { icon: '🏥', title: 'Health Ministry', desc: 'Promote whole-person wellness through health seminars, cooking classes, and community health programs.', link: 'View programs →' },
-        { icon: '🌍', title: 'Missions', desc: "Share God's love locally and globally through outreach programs, community service, and mission trips.", link: 'Get involved →' },
-        { icon: '🎯', title: 'Youth Ministry', desc: 'Empower the next generation through Pathfinders, youth groups, and mentorship programs.', link: 'Register your child →' },
+        { icon: 'book-open', title: 'Bible Study', desc: "Deepen your understanding of God's Word through interactive study groups and personal devotion resources." },
+        { icon: 'music', title: 'Music Ministry', desc: "Share God's love through song with our choir, praise team, and special music programs for all ages." },
+        { icon: 'users', title: 'Family Ministry', desc: 'Strengthen family bonds through marriage enrichment, parenting workshops, and family-focused events.' },
+        { icon: 'heart-pulse', title: 'Health Ministry', desc: 'Promote whole-person wellness through health seminars, cooking classes, and community health programs.' },
+        { icon: 'globe', title: 'Missions', desc: "Share God's love locally and globally through outreach programs, community service, and mission trips." },
+        { icon: 'sparkles', title: 'Youth Ministry', desc: 'Empower the next generation through Pathfinders, youth groups, and mentorship programs.' },
       ].map(m => (
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-10 transition-all duration-300 hover:bg-white/8 hover:-translate-y-1 hover:border-gold reveal">
-          <div class="w-[72px] h-[72px] bg-gradient-to-br from-gold to-gold-light rounded-lg flex items-center justify-center text-[32px] mb-6">{m.icon}</div>
-          <h3 class="text-[22px] text-white mb-3">{m.title}</h3>
-          <p class="text-white/60 text-sm leading-relaxed">{m.desc}</p>
-          <a href="#" class="inline-flex items-center gap-1.5 mt-4 text-gold text-sm font-medium no-underline hover:text-gold-light">{m.link}</a>
+        <div class="bg-white/5 border border-white/8 rounded-xl p-7 transition-all duration-300 hover:bg-white/8 hover:-translate-y-0.5 hover:border-gold/40 reveal">
+          <div class="w-11 h-11 bg-gold/15 rounded-lg flex items-center justify-center mb-4">
+            <i data-lucide={m.icon} class="w-5 h-5 text-gold"></i>
+          </div>
+          <h3 class="text-lg text-white mb-2">{m.title}</h3>
+          <p class="text-white/50 text-sm leading-relaxed">{m.desc}</p>
         </div>
       ))}
     </div>

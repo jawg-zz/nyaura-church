@@ -1,32 +1,29 @@
 ---
-// Service times banner
+// Service times
 ---
 
-<div class="bg-cream px-6 lg:px-12 py-15 border-b border-black/6">
-  <div class="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
-    <div class="text-center">
-      <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-[28px] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">📖</div>
-      <h4 class="font-body text-base font-semibold mb-1 text-navy">Sabbath School</h4>
-      <p class="text-sm text-text-light">Bible study for all ages</p>
-      <p class="text-[13px] text-gold font-semibold mt-2">Saturday 9:30 AM</p>
+<div class="bg-surface border-b border-border px-6 lg:px-12 py-14">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="flex items-center gap-3 mb-10">
+      <span class="inline-block w-6 h-px bg-gold"></span>
+      <span class="text-xs font-semibold tracking-[2px] uppercase text-text-muted">Service Times</span>
     </div>
-    <div class="text-center">
-      <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-[28px] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">⛪</div>
-      <h4 class="font-body text-base font-semibold mb-1 text-navy">Divine Worship</h4>
-      <p class="text-sm text-text-light">Main worship service</p>
-      <p class="text-[13px] text-gold font-semibold mt-2">Saturday 11:00 AM</p>
-    </div>
-    <div class="text-center">
-      <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-[28px] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">🙏</div>
-      <h4 class="font-body text-base font-semibold mb-1 text-navy">Prayer Meeting</h4>
-      <p class="text-sm text-text-light">Midweek fellowship</p>
-      <p class="text-[13px] text-gold font-semibold mt-2">Wednesday 7:00 PM</p>
-    </div>
-    <div class="text-center">
-      <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-[28px] shadow-[0_4px_12px_rgba(0,0,0,0.06)]">✨</div>
-      <h4 class="font-body text-base font-semibold mb-1 text-navy">Pathfinders</h4>
-      <p class="text-sm text-text-light">Youth ministry program</p>
-      <p class="text-[13px] text-gold font-semibold mt-2">Friday 5:00 PM</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        { icon: 'book-open', title: 'Sabbath School', desc: 'Bible study for all ages', time: 'Saturday 9:30 AM' },
+        { icon: 'church', title: 'Divine Worship', desc: 'Main worship service', time: 'Saturday 11:00 AM' },
+        { icon: 'heart', title: 'Prayer Meeting', desc: 'Midweek fellowship', time: 'Wednesday 7:00 PM' },
+        { icon: 'sun', title: 'Pathfinders', desc: 'Youth ministry program', time: 'Friday 5:00 PM' },
+      ].map(s => (
+        <div class="group relative bg-white rounded-xl p-6 border border-border/60 transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)] hover:border-gold/30">
+          <div class="w-11 h-11 bg-navy/5 rounded-lg flex items-center justify-center mb-4 text-navy transition-colors duration-300 group-hover:bg-gold/10 group-hover:text-gold">
+            <i data-lucide={s.icon} class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-body text-sm font-semibold text-navy mb-1">{s.title}</h4>
+          <p class="text-sm text-text-secondary">{s.desc}</p>
+          <p class="text-xs font-semibold text-gold mt-3 tracking-wide">{s.time}</p>
+        </div>
+      ))}
     </div>
   </div>
 </div>
