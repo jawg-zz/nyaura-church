@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="sabbathGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#c9a962"/>
+      <stop offset="100%" style="stop-color:#e8d5a3"/>
+    </linearGradient>
+  </defs>
+  <!-- Sun rays -->
+  <g stroke="#c9a962" stroke-width="3" stroke-linecap="round">
+    <line x1="100" y1="20" x2="100" y2="40"/>
+    <line x1="100" y1="160" x2="100" y2="180"/>
+    <line x1="20" y1="100" x2="40" y2="100"/>
+    <line x1="160" y1="100" x2="180" y2="100"/>
+    <line x1="43" y1="43" x2="57" y2="57"/>
+    <line x1="143" y1="143" x2="157" y2="157"/>
+    <line x1="157" y1="43" x2="143" y2="57"/>
+    <line x1="43" y1="157" x2="57" y2="143"/>
+  </g>
+  <!-- Sun -->
+  <circle cx="100" cy="100" r="50" fill="url(#sabbathGrad)"/>
+  <!-- Open book silhouette -->
+  <path d="M60 120 Q100 100 140 120 L140 150 Q100 130 60 150 Z" fill="#1a365d"/>
+</svg>
