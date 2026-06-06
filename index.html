@@ -4,93 +4,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nyaura SDA Church</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-primary: #2d5a3d;
-      --color-primary-light: #3d7a52;
-      --color-primary-dark: #1e3d29;
-      --color-accent: #c9a962;
-      --color-accent-light: #e8d5a3;
-      --color-bg: #faf9f6;
-      --color-bg-alt: #f5f3ee;
-      --color-text: #2c2c2c;
-      --color-text-light: #6b6b6b;
-      --color-white: #ffffff;
-      --color-border: #e8e6e1;
-      --font-heading: 'Playfair Display', Georgia, serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-      --shadow-lg: 0 12px 32px rgba(0,0,0,0.12);
-      --radius: 12px;
+      --bg: #fefdfb;
+      --bg-warm: #faf8f4;
+      --text: #1a1814;
+      --text-muted: #7a756c;
+      --gold: #b8860b;
+      --gold-light: #d4a843;
+      --green: #2c4a3e;
+      --green-light: #3d6b5a;
+      --white: #ffffff;
+      --border: #e8e4dc;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-body);
-      color: var(--color-text);
-      background: var(--color-bg);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
     }
 
-    /* Navigation */
+    /* ═══ NAV ═══ */
     nav {
       position: fixed;
       top: 0;
-      left: 0;
-      right: 0;
-      background: rgba(250, 249, 246, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--color-border);
-      z-index: 1000;
-      padding: 1rem 2rem;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 100%;
+      z-index: 100;
+      padding: 1.2rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: all 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(254, 253, 251, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 var(--border);
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: var(--color-primary);
-    }
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--color-primary);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.2rem;
-    }
-
-    .logo-text {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
       font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
     }
+
+    nav.scrolled .logo { color: var(--text); }
 
     .nav-links {
       display: flex;
@@ -100,75 +67,51 @@
 
     .nav-links a {
       text-decoration: none;
-      color: var(--color-text);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.9rem;
       font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-      position: relative;
+      letter-spacing: 0.03em;
+      transition: color 0.3s;
     }
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--color-primary);
-      transition: width 0.3s;
-    }
+    nav.scrolled .nav-links a { color: var(--text-muted); }
+    nav.scrolled .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--white); }
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-links a:hover {
-      color: var(--color-primary);
-    }
-
-    .nav-cta {
-      background: var(--color-primary);
-      color: white !important;
-      padding: 0.6rem 1.5rem;
-      border-radius: 8px;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--color-primary-light);
-      transform: translateY(-1px);
-    }
-
-    .nav-cta::after {
-      display: none !important;
-    }
-
-    .mobile-menu-btn {
+    .mobile-toggle {
       display: none;
       background: none;
       border: none;
       cursor: pointer;
-      padding: 0.5rem;
+      width: 28px;
+      height: 20px;
+      position: relative;
+      z-index: 10;
     }
 
-    .mobile-menu-btn span {
+    .mobile-toggle span {
       display: block;
-      width: 24px;
+      width: 100%;
       height: 2px;
-      background: var(--color-text);
-      margin: 5px 0;
+      background: var(--white);
+      position: absolute;
+      left: 0;
       transition: 0.3s;
     }
 
-    /* Hero Section */
+    nav.scrolled .mobile-toggle span { background: var(--text); }
+    .mobile-toggle span:nth-child(1) { top: 0; }
+    .mobile-toggle span:nth-child(2) { top: 9px; }
+    .mobile-toggle span:nth-child(3) { bottom: 0; }
+
+    /* ═══ HERO ═══ */
     .hero {
       min-height: 100vh;
+      background: linear-gradient(165deg, #1a2e28 0%, #0d1b16 40%, #1a1814 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 8rem 2rem 4rem;
-      background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
       position: relative;
       overflow: hidden;
     }
@@ -176,65 +119,77 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(45, 90, 61, 0.08) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(184, 134, 11, 0.08) 0%, transparent 60%);
       border-radius: 50%;
     }
 
     .hero::after {
       content: '';
       position: absolute;
-      bottom: -30%;
-      left: -10%;
+      bottom: -300px;
+      left: -100px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(201, 169, 98, 0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(61, 107, 90, 0.1) 0%, transparent 60%);
       border-radius: 50%;
     }
 
     .hero-content {
-      max-width: 800px;
       position: relative;
       z-index: 1;
+      max-width: 850px;
+      padding: 0 2rem;
     }
 
-    .hero-badge {
-      display: inline-block;
-      background: var(--color-primary);
-      color: white;
-      padding: 0.5rem 1.25rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      letter-spacing: 0.5px;
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .hero-tag::before,
+    .hero-tag::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
     }
 
     .hero h1 {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 600;
-      line-height: 1.15;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
       margin-bottom: 1.5rem;
-      color: var(--color-primary-dark);
+      letter-spacing: -0.03em;
     }
 
-    .hero h1 span {
-      color: var(--color-accent);
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-light);
     }
 
-    .hero p {
-      font-size: 1.2rem;
-      color: var(--color-text-light);
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
+    .hero-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 1.1rem;
+      max-width: 520px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
     }
 
-    .hero-buttons {
+    .hero-ctas {
       display: flex;
       gap: 1rem;
       justify-content: center;
@@ -242,762 +197,800 @@
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 1rem 2rem;
-      border-radius: 10px;
-      font-weight: 500;
-      font-size: 1rem;
+      padding: 0.9rem 2.2rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       text-decoration: none;
       transition: all 0.3s;
-      border: none;
       cursor: pointer;
+      border: none;
     }
 
-    .btn-primary {
-      background: var(--color-primary);
-      color: white;
-      box-shadow: 0 4px 15px rgba(45, 90, 61, 0.3);
+    .btn-light {
+      background: var(--white);
+      color: var(--text);
     }
 
-    .btn-primary:hover {
-      background: var(--color-primary-light);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(45, 90, 61, 0.4);
+    .btn-light:hover {
+      background: var(--gold-light);
+      color: var(--white);
     }
 
-    .btn-secondary {
-      background: var(--color-white);
-      color: var(--color-text);
-      border: 1px solid var(--color-border);
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.2);
     }
 
-    .btn-secondary:hover {
-      background: var(--color-bg-alt);
-      border-color: var(--color-primary);
-      color: var(--color-primary);
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
     }
 
-    /* Section Styles */
-    section {
-      padding: 6rem 2rem;
+    .scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.3);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 4rem;
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
     }
+
+    /* ═══ SECTION COMMON ═══ */
+    section { padding: 8rem 2rem; }
 
     .section-label {
-      display: inline-block;
-      color: var(--color-accent);
-      font-weight: 600;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
+      color: var(--gold);
       margin-bottom: 1rem;
+      display: block;
     }
 
     .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 600;
-      color: var(--color-primary-dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       margin-bottom: 1rem;
-      line-height: 1.2;
     }
 
-    .section-subtitle {
-      color: var(--color-text-light);
-      font-size: 1.1rem;
-      line-height: 1.7;
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 500px;
+      line-height: 1.8;
     }
 
-    /* About Section */
+    /* ═══ ABOUT ═══ */
     .about {
-      background: var(--color-white);
+      background: var(--white);
     }
 
-    .about-grid {
+    .about-inner {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 6rem;
       align-items: center;
     }
 
-    .about-image {
+    .about-visual {
       position: relative;
-      border-radius: var(--radius);
+      aspect-ratio: 3/4;
+      background: var(--green);
+      border-radius: 4px;
       overflow: hidden;
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+    }
+
+    .about-visual::after {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 2px;
+    }
+
+    .about-visual-text {
+      position: absolute;
+      inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      font-size: 4rem;
+      font-size: 8rem;
+      opacity: 0.15;
     }
 
-    .about-content h2 {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      color: var(--color-primary-dark);
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
+    .about-text .section-desc {
+      margin-bottom: 2.5rem;
     }
 
-    .about-content p {
-      color: var(--color-text-light);
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
+    .about-text .section-desc + .section-desc {
+      margin-bottom: 3rem;
     }
 
     .about-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 2rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--color-border);
+      display: flex;
+      gap: 3rem;
     }
 
-    .stat {
-      text-align: center;
+    .about-stat {
+      border-left: 1px solid var(--border);
+      padding-left: 1.5rem;
     }
 
-    .stat-number {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
+    .about-stat:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .about-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
       font-weight: 600;
-      color: var(--color-primary);
+      color: var(--green);
+      line-height: 1;
     }
 
-    .stat-label {
-      font-size: 0.9rem;
-      color: var(--color-text-light);
+    .about-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
     }
 
-    /* Services Section */
+    /* ═══ SERVICES ═══ */
     .services {
-      background: var(--color-bg);
+      background: var(--bg-warm);
+    }
+
+    .services-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 5rem;
+    }
+
+    .services-header .section-desc {
+      margin: 0 auto;
     }
 
     .services-grid {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--border);
     }
 
-    .service-card {
-      background: var(--color-white);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      border: 1px solid var(--color-border);
-      transition: all 0.3s;
+    .svc {
+      background: var(--bg-warm);
+      padding: 3rem;
+      position: relative;
+      transition: background 0.4s;
     }
 
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--color-primary);
+    .svc:hover {
+      background: var(--white);
     }
 
-    .service-icon {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.5rem;
+    .svc-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--green);
+      line-height: 1;
       margin-bottom: 1.5rem;
     }
 
-    .service-card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.4rem;
-      color: var(--color-primary-dark);
+    .svc h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
       margin-bottom: 0.75rem;
     }
 
-    .service-card p {
-      color: var(--color-text-light);
+    .svc p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
       line-height: 1.7;
     }
 
-    .service-time {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background: var(--color-bg-alt);
-      border-radius: 6px;
-      font-weight: 500;
-      color: var(--color-primary);
+    .svc-day {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
     }
 
-    /* Pastor Section */
+    /* ═══ PASTOR ═══ */
     .pastor {
-      background: var(--color-white);
+      background: var(--white);
     }
 
-    .pastor-content {
+    .pastor-inner {
       max-width: 1000px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
-      align-items: center;
+      grid-template-columns: 380px 1fr;
+      gap: 5rem;
+      align-items: start;
     }
 
-    .pastor-image {
+    .pastor-img {
       aspect-ratio: 3/4;
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 5rem;
+      background: var(--bg-warm);
+      border-radius: 4px;
       position: relative;
       overflow: hidden;
     }
 
-    .pastor-image::after {
+    .pastor-img::before {
+      content: '👤';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      opacity: 0.15;
+    }
+
+    .pastor-img::after {
       content: '';
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      height: 40%;
-      background: linear-gradient(transparent, rgba(30, 61, 41, 0.6));
+      height: 120px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.3));
     }
 
-    .pastor-info h2 {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
-      color: var(--color-primary-dark);
+    .pastor-body .section-title {
       margin-bottom: 0.5rem;
     }
 
     .pastor-role {
-      color: var(--color-accent);
-      font-weight: 500;
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
     }
 
-    .pastor-info p {
-      color: var(--color-text-light);
-      line-height: 1.8;
+    .pastor-body .section-desc {
       margin-bottom: 1rem;
     }
 
     .pastor-quote {
-      background: var(--color-bg);
-      padding: 1.5rem;
-      border-left: 4px solid var(--color-primary);
-      border-radius: 0 8px 8px 0;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
+      padding: 2rem;
+      background: var(--bg-warm);
+      border-left: 2px solid var(--gold);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
       font-style: italic;
-      color: var(--color-text);
       line-height: 1.7;
+      color: var(--text);
     }
 
-    /* Events Section */
+    /* ═══ EVENTS ═══ */
     .events {
-      background: var(--color-bg);
+      background: var(--green);
+      color: var(--white);
     }
 
-    .events-grid {
-      max-width: 1000px;
+    .events .section-label { color: var(--gold-light); }
+    .events .section-title { color: var(--white); }
+    .events .section-desc { color: rgba(255,255,255,0.5); }
+
+    .events-header {
+      max-width: 600px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+
+    .events-list {
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
     }
 
-    .event-card {
-      background: var(--color-white);
-      border-radius: var(--radius);
-      padding: 2rem;
+    .evt {
       display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 2rem;
+      grid-template-columns: 100px 1fr auto;
+      gap: 3rem;
       align-items: center;
-      border: 1px solid var(--color-border);
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       transition: all 0.3s;
     }
 
-    .event-card:hover {
-      box-shadow: var(--shadow-md);
-      border-color: var(--color-accent);
+    .evt:hover {
+      padding-left: 1rem;
     }
 
-    .event-date {
+    .evt:first-child {
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .evt-date {
       text-align: center;
-      min-width: 80px;
     }
 
-    .event-day {
-      font-family: var(--font-heading);
-      font-size: 2.5rem;
+    .evt-day {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
       font-weight: 600;
-      color: var(--color-primary);
       line-height: 1;
     }
 
-    .event-month {
-      font-size: 0.9rem;
-      color: var(--color-text-light);
+    .evt-month {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.25rem;
     }
 
-    .event-info h3 {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      color: var(--color-primary-dark);
+    .evt h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
       margin-bottom: 0.25rem;
     }
 
-    .event-info p {
-      color: var(--color-text-light);
-      font-size: 0.95rem;
+    .evt p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
     }
 
-    .event-time {
-      background: var(--color-primary);
-      color: white;
+    .evt-time {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 168, 67, 0.3);
       padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-weight: 500;
-      font-size: 0.9rem;
+      border-radius: 4px;
       white-space: nowrap;
     }
 
-    /* Contact Section */
+    /* ═══ CONTACT ═══ */
     .contact {
-      background: var(--color-primary-dark);
-      color: white;
+      background: var(--bg);
     }
 
-    .contact .section-title {
-      color: white;
-    }
-
-    .contact .section-subtitle {
-      color: rgba(255,255,255,0.7);
-    }
-
-    .contact-grid {
+    .contact-inner {
       max-width: 1000px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .contact-left .section-title {
+      margin-bottom: 2rem;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
       gap: 2rem;
     }
 
-    .contact-card {
-      background: rgba(255,255,255,0.1);
-      border-radius: var(--radius);
-      padding: 2rem;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.15);
+    .contact-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: start;
     }
 
-    .contact-card-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(255,255,255,0.15);
+    .contact-icon {
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
+      background: var(--bg-warm);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.5rem;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
+      flex-shrink: 0;
     }
 
-    .contact-card h3 {
-      font-family: var(--font-heading);
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
+    .contact-item h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
     }
 
-    .contact-card p {
-      color: rgba(255,255,255,0.7);
+    .contact-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
       line-height: 1.6;
     }
 
-    .contact-card a {
-      color: var(--color-accent-light);
+    .contact-item a {
+      color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 0.3s;
     }
 
-    .contact-card a:hover {
-      color: var(--color-accent);
+    .contact-item a:hover { color: var(--gold); }
+
+    .contact-map {
+      background: var(--bg-warm);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      color: var(--text-muted);
+      font-size: 3rem;
+      opacity: 0.3;
     }
 
-    /* Footer */
+    /* ═══ FOOTER ═══ */
     footer {
-      background: #1a1a1a;
-      color: rgba(255,255,255,0.6);
-      padding: 3rem 2rem;
-      text-align: center;
+      background: var(--text);
+      color: rgba(255,255,255,0.4);
+      padding: 4rem 2rem 2rem;
     }
 
-    .footer-content {
-      max-width: 1200px;
+    .footer-inner {
+      max-width: 1100px;
       margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    .footer-logo {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      color: white;
-      margin-bottom: 1rem;
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0.5rem;
     }
 
     footer p {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .about-grid,
-      .pastor-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .about-image {
-        order: -1;
-      }
-
-      .about-stats {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-      }
-
-      .stat-number {
-        font-size: 1.8rem;
-      }
-
-      .event-card {
-        grid-template-columns: auto 1fr;
-      }
-
-      .event-time {
-        grid-column: 2;
-        justify-self: start;
-      }
-
-      section {
-        padding: 4rem 1.5rem;
-      }
-
-      .hero {
-        padding: 7rem 1.5rem 3rem;
-      }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .footer-links a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.3s;
     }
 
-    .hero-content > * {
-      animation: fadeInUp 0.8s ease-out forwards;
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 1.5rem auto 0;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-visual { max-width: 400px; margin: 0 auto; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pastor-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .pastor-img { max-width: 350px; margin: 0 auto; }
+      .evt { grid-template-columns: 80px 1fr; gap: 1.5rem; }
+      .evt-time { grid-column: 2; justify-self: start; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-inner { flex-direction: column; gap: 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 5rem 1.5rem; }
+      .about-stats { flex-wrap: wrap; gap: 1.5rem; }
+    }
+
+    /* ═══ ANIMATIONS ═══ */
+    .fade-up {
       opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
     }
 
-    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-    .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
-    .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
-    .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="#" class="logo">
-        <div class="logo-icon">✦</div>
-        <span class="logo-text">Nyaura SDA</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#pastor">Our Pastor</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#contact" class="nav-cta">Visit Us</a></li>
-      </ul>
-      <button class="mobile-menu-btn" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="logo">Nyaura SDA</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pastor">Pastor</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <span class="hero-badge">Welcome Home</span>
-      <h1>A Place of Faith, <span>Love</span> & Community</h1>
-      <p>Join us in worship and discover a spiritual home where everyone belongs. Nyaura SDA Church is a family of believers dedicated to sharing God's love.</p>
-      <div class="hero-buttons">
-        <a href="#services" class="btn btn-primary">
-          <span>Plan Your Visit</span>
-          <span>→</span>
-        </a>
-        <a href="#about" class="btn btn-secondary">
-          <span>Learn More</span>
-        </a>
+      <div class="hero-tag">Seventh-day Adventist Church</div>
+      <h1>Walk in <em>faith</em>,<br>grow in <em>grace</em></h1>
+      <p class="hero-sub">A spiritual home where every heart finds belonging and every soul encounters God's love.</p>
+      <div class="hero-ctas">
+        <a href="#services" class="btn btn-light">Plan Your Visit</a>
+        <a href="#about" class="btn btn-ghost">Learn More</a>
       </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- ABOUT -->
   <section id="about" class="about">
-    <div class="about-grid">
-      <div class="about-image">
-        <span>⛪</span>
+    <div class="about-inner">
+      <div class="about-visual fade-up">
+        <div class="about-visual-text">✦</div>
       </div>
-      <div class="about-content">
-        <span class="section-label">About Us</span>
-        <h2>Growing Together in Christ</h2>
-        <p>Nyaura SDA Church is a vibrant Seventh-day Adventist congregation committed to worshiping God in spirit and truth. We believe in the transformative power of faith, the importance of community, and the hope found in God's Word.</p>
-        <p>Whether you're seeking spiritual growth, meaningful fellowship, or a place to serve, you'll find a warm welcome here. Our doors are open to all who wish to draw closer to God.</p>
+      <div class="about-text">
+        <span class="section-label">About Our Church</span>
+        <h2 class="section-title">Rooted in Scripture,<br>united in purpose</h2>
+        <p class="section-desc">
+          Nyaura SDA Church is a community of believers devoted to worshiping God in spirit and truth. We hold fast to the timeless message of the Three Angels and the hope of Christ's soon return.
+        </p>
+        <p class="section-desc">
+          Whether you're exploring faith for the first time or deepening a lifelong walk, you'll find warmth, encouragement, and purpose here.
+        </p>
         <div class="about-stats">
-          <div class="stat">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Members</div>
+          <div class="about-stat">
+            <div class="about-stat-num">500+</div>
+            <div class="about-stat-label">Members</div>
           </div>
-          <div class="stat">
-            <div class="stat-number">25+</div>
-            <div class="stat-label">Years</div>
+          <div class="about-stat">
+            <div class="about-stat-num">25+</div>
+            <div class="about-stat-label">Years</div>
           </div>
-          <div class="stat">
-            <div class="stat-number">15+</div>
-            <div class="stat-label">Ministries</div>
+          <div class="about-stat">
+            <div class="about-stat-num">15+</div>
+            <div class="about-stat-label">Ministries</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- SERVICES -->
   <section id="services" class="services">
-    <div class="section-header">
+    <div class="services-header">
       <span class="section-label">Worship With Us</span>
-      <h2 class="section-title">Our Service Times</h2>
-      <p class="section-subtitle">Experience uplifting worship, meaningful fellowship, and the timeless truths of God's Word.</p>
+      <h2 class="section-title">Gather times</h2>
+      <p class="section-desc">Come as you are. Each service is an invitation to encounter God's presence and connect with community.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">📖</div>
+      <div class="svc fade-up">
+        <div class="svc-time">9:30</div>
         <h3>Sabbath School</h3>
-        <p>Start your Sabbath with interactive Bible study classes for all ages. Deepen your understanding of Scripture in a welcoming environment.</p>
-        <div class="service-time">🕘 Saturday, 9:30 AM</div>
+        <p>Interactive Bible study for every age — dig into God's Word together before the main service.</p>
+        <span class="svc-day">Saturdays</span>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🎵</div>
-        <h3>Divine Worship Service</h3>
-        <p>Join our main worship experience featuring inspiring music, prayer, and a message from God's Word for the whole family.</p>
-        <div class="service-time">🕙 Saturday, 11:00 AM</div>
+      <div class="svc fade-up">
+        <div class="svc-time">11:00</div>
+        <h3>Divine Worship</h3>
+        <p>Our main gathering — prayer, music, and a message from Scripture for the whole family.</p>
+        <span class="svc-day">Saturdays</span>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🙏</div>
-        <h3>Wednesday Prayer Meeting</h3>
-        <p>Midweek fellowship and prayer service where we share testimonies, pray together, and study the Bible.</p>
-        <div class="service-time">🕖 Wednesday, 7:00 PM</div>
+      <div class="svc fade-up">
+        <div class="svc-time">7:00</div>
+        <h3>Prayer Meeting</h3>
+        <p>Midweek fellowship to share, pray, and study together in a smaller setting.</p>
+        <span class="svc-day">Wednesdays</span>
       </div>
     </div>
   </section>
 
-  <!-- Pastor Section -->
+  <!-- PASTOR -->
   <section id="pastor" class="pastor">
-    <div class="pastor-content">
-      <div class="pastor-image">
-        <span>👤</span>
-      </div>
-      <div class="pastor-info">
-        <span class="section-label">Leadership</span>
-        <h2>Pastor [Name]</h2>
+    <div class="pastor-inner">
+      <div class="pastor-img fade-up"></div>
+      <div class="pastor-body">
+        <span class="section-label">Our Pastor</span>
+        <h2 class="section-title">[Pastor Name]</h2>
         <div class="pastor-role">Senior Pastor</div>
-        <p>Our pastor leads with compassion, wisdom, and a genuine love for God's people. Under their guidance, our church continues to grow in faith and service.</p>
-        <p>With a heart for ministry and a passion for sharing the Gospel, Pastor [Name] invites you to be part of our church family and discover God's purpose for your life.</p>
+        <p class="section-desc">
+          With a heart for shepherding and a passion for God's Word, our pastor leads this congregation with grace, wisdom, and genuine care.
+        </p>
+        <p class="section-desc">
+          Under their guidance, Nyaura SDA continues to grow in faith, service, and love — reaching the community and beyond with the hope of the gospel.
+        </p>
         <div class="pastor-quote">
-          "Come as you are. God has a plan for your life, and it starts with you taking the first step through those doors."
+          "Come as you are. God has a purpose for your life, and it begins with walking through these doors."
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Events Section -->
+  <!-- EVENTS -->
   <section id="events" class="events">
-    <div class="section-header">
-      <span class="section-label">What's Happening</span>
-      <h2 class="section-title">Upcoming Events</h2>
-      <p class="section-subtitle">Join us for these special gatherings and be part of our church community.</p>
+    <div class="events-header">
+      <span class="section-label">Upcoming</span>
+      <h2 class="section-title">What's Happening</h2>
+      <p class="section-desc">Join us for these special gatherings and be part of something meaningful.</p>
     </div>
-    <div class="events-grid">
-      <div class="event-card">
-        <div class="event-date">
-          <div class="event-day">15</div>
-          <div class="event-month">June</div>
+    <div class="events-list">
+      <div class="evt fade-up">
+        <div class="evt-date">
+          <div class="evt-day">15</div>
+          <div class="evt-month">June</div>
         </div>
-        <div class="event-info">
+        <div>
           <h3>Youth Sabbath</h3>
-          <p>A special worship service led by our talented young people.</p>
+          <p>A worship service led by the young people of our church.</p>
         </div>
-        <div class="event-time">11:00 AM</div>
+        <div class="evt-time">11:00 AM</div>
       </div>
-      <div class="event-card">
-        <div class="event-date">
-          <div class="event-day">22</div>
-          <div class="event-month">June</div>
+      <div class="evt fade-up">
+        <div class="evt-date">
+          <div class="evt-day">22</div>
+          <div class="evt-month">June</div>
         </div>
-        <div class="event-info">
+        <div>
           <h3>Baptismal Service</h3>
-          <p>Celebrate new life in Christ as members make their public commitment.</p>
+          <p>Celebrating new life in Christ as members publicly declare their faith.</p>
         </div>
-        <div class="event-time">11:00 AM</div>
+        <div class="evt-time">11:00 AM</div>
       </div>
-      <div class="event-card">
-        <div class="event-date">
-          <div class="event-day">29</div>
-          <div class="event-month">June</div>
+      <div class="evt fade-up">
+        <div class="evt-date">
+          <div class="evt-day">29</div>
+          <div class="evt-month">June</div>
         </div>
-        <div class="event-info">
+        <div>
           <h3>Community Outreach</h3>
-          <p>Join us as we serve our neighbors through acts of love and kindness.</p>
+          <p>Serving our neighbors through acts of compassion and love.</p>
         </div>
-        <div class="event-time">9:00 AM</div>
+        <div class="evt-time">9:00 AM</div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- CONTACT -->
   <section id="contact" class="contact">
-    <div class="section-header">
-      <span class="section-label" style="color: var(--color-accent-light);">Get In Touch</span>
-      <h2 class="section-title">Visit Us</h2>
-      <p class="section-subtitle">We'd love to welcome you to our church family. Come experience the warmth of Christian fellowship.</p>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="contact-card-icon">📍</div>
-        <h3>Location</h3>
-        <p>[Church Address]<br>[City, State/County]<br>[Country]</p>
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Visit us this Sabbath</h2>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <h4>Location</h4>
+              <p>[Church Address]<br>[City, County]<br>[Country]</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <h4>Phone & Email</h4>
+              <p><a href="tel:+254XXXXXXXXX">+254 XXX XXX XXX</a><br><a href="mailto:info@nyaurasda.org">info@nyaurasda.org</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <h4>Sabbath Services</h4>
+              <p>Sabbath School: 9:30 AM<br>Divine Service: 11:00 AM<br>Prayer Meeting: Wed 7:00 PM</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="contact-card">
-        <div class="contact-card-icon">📞</div>
-        <h3>Contact</h3>
-        <p>Phone: <a href="tel:+254XXXXXXXXX">+254 XXX XXX XXX</a><br>Email: <a href="mailto:info@nyaurasda.org">info@nyaurasda.org</a></p>
-      </div>
-      <div class="contact-card">
-        <div class="contact-card-icon">🕐</div>
-        <h3>Service Times</h3>
-        <p>Sabbath School: 9:30 AM<br>Divine Service: 11:00 AM<br>Prayer Meeting: Wed 7:00 PM</p>
-      </div>
+      <div class="contact-map">📍</div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-content">
-      <div class="footer-logo">Nyaura SDA Church</div>
-      <p>© 2024 Nyaura Seventh-day Adventist Church. All rights reserved.</p>
-      <p style="margin-top: 0.5rem; font-size: 0.85rem;">Seventh-day Adventist Church</p>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Nyaura SDA Church</div>
+        <p>Seventh-day Adventist Church</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Nyaura Seventh-day Adventist Church. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    mobileMenuBtn.addEventListener('click', () => {
-      navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-      navLinks.style.flexDirection = 'column';
-      navLinks.style.position = 'absolute';
-      navLinks.style.top = '100%';
-      navLinks.style.left = '0';
-      navLinks.style.right = '0';
-      navLinks.style.background = 'white';
-      navLinks.style.padding = '1rem 2rem';
-      navLinks.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
     });
 
-    // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+    // Mobile menu
+    document.querySelector('.mobile-toggle').addEventListener('click', function() {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '100%';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = '#fff';
+      links.style.padding = '2rem';
+      links.style.gap = '1.5rem';
+      links.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-          // Close mobile menu if open
-          if (window.innerWidth <= 768) {
-            navLinks.style.display = 'none';
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) {
+          t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (window.innerWidth <= 900) {
+            document.querySelector('.nav-links').style.display = 'none';
           }
         }
       });
     });
 
-    // Intersection Observer for scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
+    // Fade in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    // Observe service cards and event cards
-    document.querySelectorAll('.service-card, .event-card, .contact-card').forEach(card => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      card.style.transition = 'all 0.6s ease-out';
-      observer.observe(card);
-    });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 
 </body>
