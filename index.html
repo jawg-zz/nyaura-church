@@ -4,994 +4,207 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nyaura SDA Church</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fefdfb;
-      --bg-warm: #faf8f4;
-      --text: #1a1814;
-      --text-muted: #7a756c;
-      --gold: #b8860b;
-      --gold-light: #d4a843;
-      --green: #2c4a3e;
-      --green-light: #3d6b5a;
-      --white: #ffffff;
-      --border: #e8e4dc;
+      --bg: #ffffff;
+      --bg-alt: #f6f5f4;
+      --text: rgba(0,0,0,0.95);
+      --text-muted: #615d59;
+      --text-light: #a39e98;
+      --accent: #0075de;
+      --accent-hover: #005bab;
+      --border: 1px solid rgba(0,0,0,0.1);
+      --radius: 12px;
+      --shadow: rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
       color: var(--text);
       background: var(--bg);
-      line-height: 1.7;
+      line-height: 1.50;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* ═══ NAV ═══ */
+    /* Typography Scale */
+    h1 { font-size: 64px; font-weight: 700; line-height: 1.00; letter-spacing: -2.125px; color: var(--text); }
+    h2 { font-size: 48px; font-weight: 700; line-height: 1.00; letter-spacing: -1.5px; color: var(--text); }
+    h3 { font-size: 22px; font-weight: 700; line-height: 1.27; letter-spacing: -0.25px; color: var(--text); }
+    p { font-size: 16px; color: var(--text-muted); }
+
+    /* Navigation */
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 1.2rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.4s;
-    }
-
-    nav.scrolled {
-      background: rgba(254, 253, 251, 0.95);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 1px 0 var(--border);
-    }
-
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-
-    nav.scrolled .logo { color: var(--text); }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: rgba(255,255,255,0.85);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      transition: color 0.3s;
-    }
-
-    nav.scrolled .nav-links a { color: var(--text-muted); }
-    nav.scrolled .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover { color: var(--white); }
-
-    .mobile-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      width: 28px;
-      height: 20px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .mobile-toggle span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--white);
-      position: absolute;
-      left: 0;
-      transition: 0.3s;
-    }
-
-    nav.scrolled .mobile-toggle span { background: var(--text); }
-    .mobile-toggle span:nth-child(1) { top: 0; }
-    .mobile-toggle span:nth-child(2) { top: 9px; }
-    .mobile-toggle span:nth-child(3) { bottom: 0; }
-
-    /* ═══ HERO ═══ */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(165deg, #1a2e28 0%, #0d1b16 40%, #1a1814 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(184, 134, 11, 0.08) 0%, transparent 60%);
-      border-radius: 50%;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -300px;
-      left: -100px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(61, 107, 90, 0.1) 0%, transparent 60%);
-      border-radius: 50%;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 850px;
-      padding: 0 2rem;
-    }
-
-    .hero-tag {
-      font-size: 0.75rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .hero-tag::before,
-    .hero-tag::after {
-      content: '';
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-      opacity: 0.5;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-
-    .hero-sub {
-      color: rgba(255,255,255,0.55);
-      font-size: 1.1rem;
-      max-width: 520px;
-      margin: 0 auto 3rem;
-      line-height: 1.8;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 0.9rem 2.2rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-light {
-      background: var(--white);
-      color: var(--text);
-    }
-
-    .btn-light:hover {
-      background: var(--gold-light);
-      color: var(--white);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: rgba(255,255,255,0.7);
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--gold);
-      color: var(--gold-light);
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(255,255,255,0.3);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
-    }
-
-    /* ═══ SECTION COMMON ═══ */
-    section { padding: 8rem 2rem; }
-
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-
-    .section-desc {
-      color: var(--text-muted);
-      max-width: 500px;
-      line-height: 1.8;
-    }
-
-    /* ═══ ABOUT ═══ */
-    .about {
-      background: var(--white);
-    }
-
-    .about-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: center;
-    }
-
-    .about-visual {
-      position: relative;
-      aspect-ratio: 3/4;
-      background: var(--green);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .about-visual::after {
-      content: '';
-      position: absolute;
-      inset: 20px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 2px;
-    }
-
-    .about-visual-text {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 8rem;
-      opacity: 0.15;
-    }
-
-    .about-text .section-desc {
-      margin-bottom: 2.5rem;
-    }
-
-    .about-text .section-desc + .section-desc {
-      margin-bottom: 3rem;
-    }
-
-    .about-stats {
-      display: flex;
-      gap: 3rem;
-    }
-
-    .about-stat {
-      border-left: 1px solid var(--border);
-      padding-left: 1.5rem;
-    }
-
-    .about-stat:first-child {
-      border-left: none;
-      padding-left: 0;
-    }
-
-    .about-stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
-      font-weight: 600;
-      color: var(--green);
-      line-height: 1;
-    }
-
-    .about-stat-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 0.3rem;
-    }
-
-    /* ═══ SERVICES ═══ */
-    .services {
-      background: var(--bg-warm);
-    }
-
-    .services-header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 5rem;
-    }
-
-    .services-header .section-desc {
-      margin: 0 auto;
-    }
-
-    .services-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      background: var(--border);
-    }
-
-    .svc {
-      background: var(--bg-warm);
-      padding: 3rem;
-      position: relative;
-      transition: background 0.4s;
-    }
-
-    .svc:hover {
-      background: var(--white);
-    }
-
-    .svc-time {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 600;
-      color: var(--green);
-      line-height: 1;
-      margin-bottom: 1.5rem;
-    }
-
-    .svc h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-
-    .svc p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      line-height: 1.7;
-    }
-
-    .svc-day {
-      display: inline-block;
-      margin-top: 1.5rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border-bottom: 1px solid var(--gold);
-      padding-bottom: 2px;
-    }
-
-    /* ═══ PASTOR ═══ */
-    .pastor {
-      background: var(--white);
-    }
-
-    .pastor-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 380px 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    .pastor-img {
-      aspect-ratio: 3/4;
-      background: var(--bg-warm);
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pastor-img::before {
-      content: '👤';
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
-      opacity: 0.15;
-    }
-
-    .pastor-img::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 120px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.3));
-    }
-
-    .pastor-body .section-title {
-      margin-bottom: 0.5rem;
-    }
-
-    .pastor-role {
-      color: var(--gold);
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
-
-    .pastor-body .section-desc {
-      margin-bottom: 1rem;
-    }
-
-    .pastor-quote {
-      margin-top: 2.5rem;
-      padding: 2rem;
-      background: var(--bg-warm);
-      border-left: 2px solid var(--gold);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-style: italic;
-      line-height: 1.7;
-      color: var(--text);
-    }
-
-    /* ═══ EVENTS ═══ */
-    .events {
-      background: var(--green);
-      color: var(--white);
-    }
-
-    .events .section-label { color: var(--gold-light); }
-    .events .section-title { color: var(--white); }
-    .events .section-desc { color: rgba(255,255,255,0.5); }
-
-    .events-header {
-      max-width: 600px;
-      margin: 0 auto 4rem;
-      text-align: center;
-    }
-
-    .events-list {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .evt {
-      display: grid;
-      grid-template-columns: 100px 1fr auto;
-      gap: 3rem;
-      align-items: center;
-      padding: 2rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      transition: all 0.3s;
-    }
-
-    .evt:hover {
-      padding-left: 1rem;
-    }
-
-    .evt:first-child {
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .evt-date {
-      text-align: center;
-    }
-
-    .evt-day {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    .evt-month {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-top: 0.25rem;
-    }
-
-    .evt h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-    }
-
-    .evt p {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.9rem;
-    }
-
-    .evt-time {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      border: 1px solid rgba(212, 168, 67, 0.3);
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-
-    /* ═══ CONTACT ═══ */
-    .contact {
-      background: var(--bg);
-    }
-
-    .contact-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-    }
-
-    .contact-left .section-title {
-      margin-bottom: 2rem;
-    }
-
-    .contact-items {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .contact-item {
-      display: flex;
-      gap: 1.5rem;
-      align-items: start;
-    }
-
-    .contact-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--bg-warm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .contact-item h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .contact-item p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .contact-item a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .contact-item a:hover { color: var(--gold); }
-
-    .contact-map {
-      background: var(--bg-warm);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 300px;
-      color: var(--text-muted);
-      font-size: 3rem;
-      opacity: 0.3;
-    }
-
-    /* ═══ FOOTER ═══ */
-    footer {
-      background: var(--text);
-      color: rgba(255,255,255,0.4);
-      padding: 4rem 2rem 2rem;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      padding-bottom: 3rem;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .footer-brand {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 0.5rem;
-    }
-
-    footer p {
-      font-size: 0.8rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      color: rgba(255,255,255,0.4);
-      text-decoration: none;
-      font-size: 0.8rem;
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover { color: var(--gold-light); }
-
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 1.5rem auto 0;
-      text-align: center;
-      font-size: 0.75rem;
-    }
-
-    /* ═══ RESPONSIVE ═══ */
-    @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
+      position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px); border-bottom: var(--border); z-index: 1000;
+    }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-size: 15px; font-weight: 500; color: var(--text); text-decoration: none; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta { background: var(--accent); color: white !important; padding: 8px 16px; border-radius: 9999px; font-weight: 600; }
+    .nav-cta:hover { background: var(--accent-hover); }
+
+    /* Sections */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-alt { background: var(--bg-alt); }
+
+    /* Hero */
+    .hero { padding: 160px 24px 80px; text-align: center; }
+    .hero p { font-size: 20px; font-weight: 500; color: var(--text-muted); max-width: 600px; margin: 0 auto 32px; }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 32px; }
+    .btn-primary { background: var(--accent); color: white; padding: 12px 24px; border-radius: 4px; font-weight: 600; text-decoration: none; font-size: 15px; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: rgba(0,0,0,0.05); color: var(--text); padding: 12px 24px; border-radius: 4px; font-weight: 600; text-decoration: none; font-size: 15px; }
+    .btn-secondary:hover { background: rgba(0,0,0,0.08); }
+
+    /* Cards */
+    .card { background: var(--bg); border: var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); transition: transform 0.2s; }
+    .card:hover { transform: translateY(-2px); }
+
+    /* Grid */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 48px; }
+
+    /* Badge */
+    .badge { background: #f2f9ff; color: #097fe8; padding: 4px 8px; border-radius: 9999px; font-size: 12px; font-weight: 600; letter-spacing: 0.125px; display: inline-block; margin-bottom: 16px; }
+
+    /* Footer */
+    footer { background: #31302e; color: white; padding: 64px 24px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 48px; }
+    .footer-col h4 { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: white; }
+    .footer-col a { display: block; color: #a39e98; text-decoration: none; margin-bottom: 8px; font-size: 14px; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { max-width: 1200px; margin: 48px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center; color: #a39e98; font-size: 14px; }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 40px; letter-spacing: -1.2px; }
+      h2 { font-size: 32px; letter-spacing: -0.8px; }
       .nav-links { display: none; }
-      .mobile-toggle { display: block; }
-
-      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .about-visual { max-width: 400px; margin: 0 auto; }
-      .services-grid { grid-template-columns: 1fr; }
-      .pastor-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .pastor-img { max-width: 350px; margin: 0 auto; }
-      .evt { grid-template-columns: 80px 1fr; gap: 1.5rem; }
-      .evt-time { grid-column: 2; justify-self: start; }
-      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .footer-inner { flex-direction: column; gap: 1.5rem; }
-    }
-
-    @media (max-width: 600px) {
-      section { padding: 5rem 1.5rem; }
-      .about-stats { flex-wrap: wrap; gap: 1.5rem; }
-    }
-
-    /* ═══ ANIMATIONS ═══ */
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s, transform 0.8s;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="nav">
-    <a href="#" class="logo">Nyaura SDA</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#pastor">Pastor</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="mobile-toggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="hero-tag">Seventh-day Adventist Church</div>
-      <h1>Walk in <em>faith</em>,<br>grow in <em>grace</em></h1>
-      <p class="hero-sub">A spiritual home where every heart finds belonging and every soul encounters God's love.</p>
-      <div class="hero-ctas">
-        <a href="#services" class="btn btn-light">Plan Your Visit</a>
-        <a href="#about" class="btn btn-ghost">Learn More</a>
-      </div>
-    </div>
-    <div class="scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div class="about-inner">
-      <div class="about-visual fade-up">
-        <div class="about-visual-text">✦</div>
-      </div>
-      <div class="about-text">
-        <span class="section-label">About Our Church</span>
-        <h2 class="section-title">Rooted in Scripture,<br>united in purpose</h2>
-        <p class="section-desc">
-          Nyaura SDA Church is a community of believers devoted to worshiping God in spirit and truth. We hold fast to the timeless message of the Three Angels and the hope of Christ's soon return.
-        </p>
-        <p class="section-desc">
-          Whether you're exploring faith for the first time or deepening a lifelong walk, you'll find warmth, encouragement, and purpose here.
-        </p>
-        <div class="about-stats">
-          <div class="about-stat">
-            <div class="about-stat-num">500+</div>
-            <div class="about-stat-label">Members</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">25+</div>
-            <div class="about-stat-label">Years</div>
-          </div>
-          <div class="about-stat">
-            <div class="about-stat-num">15+</div>
-            <div class="about-stat-label">Ministries</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section id="services" class="services">
-    <div class="services-header">
-      <span class="section-label">Worship With Us</span>
-      <h2 class="section-title">Gather times</h2>
-      <p class="section-desc">Come as you are. Each service is an invitation to encounter God's presence and connect with community.</p>
-    </div>
-    <div class="services-grid">
-      <div class="svc fade-up">
-        <div class="svc-time">9:30</div>
-        <h3>Sabbath School</h3>
-        <p>Interactive Bible study for every age — dig into God's Word together before the main service.</p>
-        <span class="svc-day">Saturdays</span>
-      </div>
-      <div class="svc fade-up">
-        <div class="svc-time">11:00</div>
-        <h3>Divine Worship</h3>
-        <p>Our main gathering — prayer, music, and a message from Scripture for the whole family.</p>
-        <span class="svc-day">Saturdays</span>
-      </div>
-      <div class="svc fade-up">
-        <div class="svc-time">7:00</div>
-        <h3>Prayer Meeting</h3>
-        <p>Midweek fellowship to share, pray, and study together in a smaller setting.</p>
-        <span class="svc-day">Wednesdays</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PASTOR -->
-  <section id="pastor" class="pastor">
-    <div class="pastor-inner">
-      <div class="pastor-img fade-up"></div>
-      <div class="pastor-body">
-        <span class="section-label">Our Pastor</span>
-        <h2 class="section-title">[Pastor Name]</h2>
-        <div class="pastor-role">Senior Pastor</div>
-        <p class="section-desc">
-          With a heart for shepherding and a passion for God's Word, our pastor leads this congregation with grace, wisdom, and genuine care.
-        </p>
-        <p class="section-desc">
-          Under their guidance, Nyaura SDA continues to grow in faith, service, and love — reaching the community and beyond with the hope of the gospel.
-        </p>
-        <div class="pastor-quote">
-          "Come as you are. God has a purpose for your life, and it begins with walking through these doors."
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EVENTS -->
-  <section id="events" class="events">
-    <div class="events-header">
-      <span class="section-label">Upcoming</span>
-      <h2 class="section-title">What's Happening</h2>
-      <p class="section-desc">Join us for these special gatherings and be part of something meaningful.</p>
-    </div>
-    <div class="events-list">
-      <div class="evt fade-up">
-        <div class="evt-date">
-          <div class="evt-day">15</div>
-          <div class="evt-month">June</div>
-        </div>
-        <div>
-          <h3>Youth Sabbath</h3>
-          <p>A worship service led by the young people of our church.</p>
-        </div>
-        <div class="evt-time">11:00 AM</div>
-      </div>
-      <div class="evt fade-up">
-        <div class="evt-date">
-          <div class="evt-day">22</div>
-          <div class="evt-month">June</div>
-        </div>
-        <div>
-          <h3>Baptismal Service</h3>
-          <p>Celebrating new life in Christ as members publicly declare their faith.</p>
-        </div>
-        <div class="evt-time">11:00 AM</div>
-      </div>
-      <div class="evt fade-up">
-        <div class="evt-date">
-          <div class="evt-day">29</div>
-          <div class="evt-month">June</div>
-        </div>
-        <div>
-          <h3>Community Outreach</h3>
-          <p>Serving our neighbors through acts of compassion and love.</p>
-        </div>
-        <div class="evt-time">9:00 AM</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <div class="contact-inner">
-      <div class="contact-left">
-        <span class="section-label">Get in Touch</span>
-        <h2 class="section-title">Visit us this Sabbath</h2>
-        <div class="contact-items">
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>
-              <h4>Location</h4>
-              <p>[Church Address]<br>[City, County]<br>[Country]</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>
-              <h4>Phone & Email</h4>
-              <p><a href="tel:+254XXXXXXXXX">+254 XXX XXX XXX</a><br><a href="mailto:info@nyaurasda.org">info@nyaurasda.org</a></p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🕐</div>
-            <div>
-              <h4>Sabbath Services</h4>
-              <p>Sabbath School: 9:30 AM<br>Divine Service: 11:00 AM<br>Prayer Meeting: Wed 7:00 PM</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-map">📍</div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div>
-        <div class="footer-brand">Nyaura SDA Church</div>
-        <p>Seventh-day Adventist Church</p>
-      </div>
-      <ul class="footer-links">
-        <li><a href="#about">About</a></li>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">Nyaura SDA</a>
+      <ul class="nav-links">
         <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#events">Events</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact" class="nav-cta">Visit Us</a></li>
       </ul>
     </div>
+  </nav>
+
+  <section class="hero">
+    <div class="section-inner">
+      <span class="badge">Welcome</span>
+      <h1>A community of faith, hope, and love.</h1>
+      <p>Join us as we grow together in Christ. Nyaura SDA is a place for everyone to find spiritual rest and purpose.</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn-primary">Plan Your Visit</a>
+        <a href="#about" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section-alt">
+    <div class="section-inner">
+      <h2>Gather with us</h2>
+      <p>Our doors are open every week for worship and fellowship.</p>
+      <div class="grid-3">
+        <div class="card">
+          <span class="badge">Saturday 9:30 AM</span>
+          <h3>Sabbath School</h3>
+          <p>Bible study for all ages. A time to dive deeper into God's Word and build lasting friendships.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Saturday 11:00 AM</span>
+          <h3>Divine Worship</h3>
+          <p>Our main service featuring inspiring music, heartfelt prayer, and a message from the Bible.</p>
+        </div>
+        <div class="card">
+          <span class="badge">Wednesday 7:00 PM</span>
+          <h3>Prayer Meeting</h3>
+          <p>A midweek gathering to share testimonies, pray together, and find strength for the week ahead.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-inner" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+      <div>
+        <span class="badge">Our Mission</span>
+        <h2>Rooted in Scripture, united in purpose.</h2>
+        <p style="margin-top: 24px;">We are a Seventh-day Adventist community dedicated to sharing the love of Jesus. Our mission is to make disciples, serve our neighbors, and live in harmony with God’s creation.</p>
+        <p style="margin-top: 16px;">Whether you are a lifelong believer or just curious, you have a place here.</p>
+      </div>
+      <div style="background: var(--bg-alt); border-radius: var(--radius); height: 400px; display: flex; align-items: center; justify-content: center; font-size: 64px; color: var(--text-light);">
+        ⛪
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="section-alt">
+    <div class="section-inner">
+      <h2>What's happening</h2>
+      <div style="margin-top: 32px;">
+        <div class="card" style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h3>Youth Sabbath</h3>
+            <p>A special service led by our young people.</p>
+          </div>
+          <span class="badge">June 15</span>
+        </div>
+        <div class="card" style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h3>Baptismal Service</h3>
+            <p>Celebrating new life in Christ.</p>
+          </div>
+          <span class="badge">June 22</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-inner" style="text-align: center; max-width: 800px;">
+      <h2>Visit us this Sabbath</h2>
+      <p style="margin-top: 16px; font-size: 20px;">[Church Address], [City]</p>
+      <p style="margin-top: 8px;">info@nyaurasda.org | +254 XXX XXX XXX</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>Nyaura SDA</h4>
+        <p style="color: #a39e98; font-size: 14px;">A community of faith in [City].</p>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#">About Us</a>
+        <a href="#">Ministries</a>
+        <a href="#">Donate</a>
+      </div>
+    </div>
     <div class="footer-bottom">
-      <p>© 2026 Nyaura Seventh-day Adventist Church. All rights reserved.</p>
+      © 2024 Nyaura Seventh-day Adventist Church. All rights reserved.
     </div>
   </footer>
-
-  <script>
-    // Nav scroll
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 80);
-    });
-
-    // Mobile menu
-    document.querySelector('.mobile-toggle').addEventListener('click', function() {
-      const links = document.querySelector('.nav-links');
-      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-      links.style.flexDirection = 'column';
-      links.style.position = 'absolute';
-      links.style.top = '100%';
-      links.style.left = '0';
-      links.style.right = '0';
-      links.style.background = '#fff';
-      links.style.padding = '2rem';
-      links.style.gap = '1.5rem';
-      links.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) {
-          t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          if (window.innerWidth <= 900) {
-            document.querySelector('.nav-links').style.display = 'none';
-          }
-        }
-      });
-    });
-
-    // Fade in on scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-  </script>
 
 </body>
 </html>
